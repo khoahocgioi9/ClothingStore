@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- CSS:MAIN -->
+    <link rel="shortcut icon" href="./img/favicon.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="./font/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/formlogin.css">
+    <link rel="stylesheet" href="./assets/css/dropdown.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+    <link rel="stylesheet" href="./assets/css/product.css">
+    <link rel="stylesheet" href="./assets/css/formdangky.css">
+    <link rel="stylesheet" href="./assets/css/video.css">
+    <link rel="stylesheet" href="./assets/css/setClothing.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/map.css">
+    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/formcart.css">
+    <link rel="stylesheet" href="./assets/css/breadcrumb.css">
+    <link rel="stylesheet" href="./assets/css/productDetail.css">
+    <link rel="stylesheet" href="./assets/css/amount.css">
+    <link rel="stylesheet" href="./assets/css/order.css">
+    <title>Sản phẩm - Levents®</title>
+</head>
+
+<body>
+    <div class="modal-search">
+        <div id='containerSearch'>
+            <div class="search">
+                <div class="search-btn">
+                    <h1 class="search-btn-text">Levents®</h1>
+                </div>
+                <div class="search-btn">
+                    <div class="search-btn-timkiem">
+                        <i onclick="timkiem()" class="fa-solid fa-magnifying-glass"></i>
+                        <input id="input" class="input-search-1" type="text" placeholder="Search..." />
+                    </div>
+                    <div class="search-btn-child">
+                        <h2> Cụm từ tìm kiếm phổ biến</h2>
+                        <ul id="myUL">
+                            <!-- <div class="product-shirt-noibat">
+                                <a class="product-shirt-a" href="">
+                                    <img width="100px" height="100px" class="product-search "src="./img/ao1.jpeg" alt="">
+                                </a>
+                                <div class="product-shirt-price">
+                                    <h1 class="product-shirt-title">Áo Levent</h1>
+                                    <p class="product-shirt-title ">380,000 vnđ</p>
+                                </div>
+                            </div> -->
+                            <!-- <li> <a href="#"></a>Áo</li>
+                            <li> <a href="#"></a>Quần</li>
+                            <li> <a href=""></a>Phụ kiện</li>
+                            <li> <a href=""></a>Balo</li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="search-btn">
+                    <div class="search-btn-cancle">
+                        <button id="formCancle" class="btn-timkiem">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-notice">
+        <div class="notice">
+            <p>Mua càng nhiều,Giảm càng sâu.<br>Lên đến 90.000đ</p>
+        </div>
+    </div>
+    <div class="headerFisrt">
+        <div class="headerFirst-text">
+            <div class="headerFirst-title">
+                <i class="fa-sharp fa-solid fa-globe"></i>
+                <p>Levents Love u </p>
+            </div>
+            <div class="headerFirst-title">
+                <i class="fa-sharp fa-solid fa-bag-shopping"></i>
+                <button>Mua ngay! </button>
+            </div>
+        </div>
+    </div>
+    <div class="headerTwo">
+        <div class="headerTwo-text">
+            <div class="headerTwo-title">
+                <a href="index.html">
+                    <h1>Levent</h1>
+                </a>
+                <div class="headerTwo-text-one">
+                    <button class="headerTwo-title-btn">
+                        <div class="header-notice">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="header__cart-notice">1</span>
+                        </div>
+                    </button>
+                    <button class="headerTwo-title-btn">
+                        <p>Sản phẩm yêu thích</p>
+                    </button>
+                    <button id='iconSearch' class="headerTwo-title-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button id="iconCart" class="headerTwo-title-btn">
+                        <i class="fa-sharp fa-solid fa-bag-shopping"></i>
+                        
+                    </button>
+                    <button id='formLogin' class="headerTwo-title-btn">
+                        <i  class="fa-solid fa-user"></i>
+                    </button>
+                    <button class="headerTwo-title-btn">
+                        <!-- <i class="fa-solid fa-flag"></i> -->
+                        <div class="flag-vn">
+                            <img style="margin-right: 12px; " src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt="">
+                        </div>
+
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <ul class="navigation">
+            <li><a href="#">Về chúng tôi</a>
+                <div class="line-Under"></div>
+            </li>
+            <li><a href="#">Cửa hàng  
+                <i class="fa-solid fa-angle-down"></i>
+             <div class="line-Under"></div>
+             </a>
+                <ul class="sub-menu">
+                    <span class="pesuado"></span>
+                    <li><a href="Shirts.html">Áo
+                    <i class="fa-solid fa-angle-down"></i>
+                </a>
+                        <ul class="sub-menu-2">
+                            <li><a href="#">Áo thun</a></li>
+                            <li><a href="#">Áo polo</a></li>
+                            <li><a href="#">Áo sơ mi</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="PageHomePants.html">Quần
+                    <i class="fa-solid fa-angle-down"></i>
+                </a>
+                        <ul class="sub-menu-3">
+                            <li>
+                                <a href="PagePantsLong.html">Quần dài
+                                <i class="fa-solid fa-angle-down"></i>
+                            </a>
+                                <ul class="sub-menu-3-second">
+                                    <li><a href="#">Quần jean</a></li>
+                                    <li><a href="#">Quần kaki</a></li>
+                                    <li><a href="#">Quần thể thao</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Quần ngắn</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Jackets.html">Áo khoác
+                    <i class="fa-solid fa-angle-down"></i>
+                </a>
+                        <ul class="sub-menu-4">
+                            <li><a href="#">Cardigan</a></li>
+                            <li><a href="#">Hoodie</a></li>
+                            <li><a href="#">Sweater</a></li>
+                            <li><a href="#">Jacket</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="PageBalo.html">Balo</a>
+                    </li>
+                    <li><a href="Accessory.html">Phụ kiện
+                    <i class="fa-solid fa-angle-down"></i>
+
+                </a>
+                        <ul class="sub-menu-5">
+                            <li><a href="#">Nón</a></li>
+                            <li><a href="#">Vớ</a></li>
+                            <li><a href="#">Dép</a></li>
+                            <li><a href="#">Túi xách</a></li>
+                            <li><a href="#">Ví</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li><a href="PageSales.html">Giảm giá</a>
+                <div class="line-Under"></div>
+            </li>
+            <li><a href="BoPhoi.html">Bộ sưu tập</a>
+                <div class="line-Under"></div>
+            </li>
+            <li> <a href="#">Bài viết </a>
+                <div class="line-Under"></div>
+            </li>
+            <li><a href="Contact.html">Liên hệ</a>
+                <div class="line-Under"></div>
+            </li>
+            <li><a href="#">Chăm sóc khách hàng
+                <i class="fa-solid fa-angle-down"></i>
+                <div class="line-Under"></div>
+            </a>
+                <ul class="sub-menu-cskh">
+                    <li><a href="#">Chính sách đổi trả & bảo hành </a>
+                        <li><a href="#">Chính sách vận chuyển </a>
+                            <li><a href="#">Hỏi & đáp</a>
+                                <li><a href="#">Hướng dẫn mua hàng & bảo quản </a>
+                </ul>
+
+                </li>
+                <li><a href="#">Tuyển dụng</a>
+                    <div class="line-Under"></div>
+                </li>
+        </ul>
+        </ul>
+    </div>
+    <div class="breadcrumb">
+        <ul class="breadcrumb__list">
+            <li>
+                <a href="#">Trang chủ</a>
+            </li>
+            <li>
+                <a href="#">Cửa hàng</a>
+            </li>
+            <li>
+                <a href="#">LEVENTS® COLOR TEE</a>
+            </li>
+        </ul>
+    </div>
+    <div class="product-detail">
+        <div class="product-detail__avatar">
+            <img src="./img/ao1.jpeg" id="mainImage" alt="">
+        </div>
+        <div class="product-detail__summary">
+            <div class="summary__title">
+                LEVENTS® COLOR TEE
+            </div>
+            <div class="summary__price">
+                380,000 vnđ
+            </div>
+            <div class="product-detail__item">
+                <div class="text">Màu sắc:
+                    <span class="name-text">Black</span>
+                </div>
+                <div class="item__custom">
+                    <div class="item__custom__choose">
+                        <img src="/img/ao1.jpeg" onclick="changeImage('ao1')" id="ao1" alt="">
+                    </div>
+                    <div class="item__custom__choose">
+                        <img src="/img/aoxanh1.jpeg" onclick="changeImage('aoxanh1')" id="aoxanh1" alt="">
+                    </div>
+                    <div class="item__custom__choose">
+                        <img src="/img/aotrang1.jpeg" onclick="changeImage('aotrang1')" id="aotrang1" alt="">
+                    </div>
+                </div>
+
+                <div class="item__size">
+                    <div class="text">
+                        Size
+                    </div>
+                    <div class="choose__size">
+                        <div class="size-audio highlight">
+                            SIZE1
+                        </div>
+                        <div class="size-audio">
+                            SIZE2
+                        </div>
+                        <div class="size-audio">
+                            SIZE3
+                        </div>
+                        <div class="size-audio">
+                            SIZE4
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-amount">
+                    <div class="text">Số lượng:</div>
+                    <div class="buy-amount">
+                        <button class="minus-btn" onclick="handleMinus()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </button>
+                        <input type="text" class="amount" id="amount" value="1">
+                        <button class="plus-btn" onclick="handlePlus()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="oder">
+                    <button id="submit" class="btn-muahang add" type="submit">
+                        <a href="Cart.html">Thêm vào giỏ</a>
+                        
+                    </button>
+                    <a href="#">
+                        <img class="sizelike" src="./img/product-khanh/heart.jpg" alt="">
+                    </a>
+                </div>
+
+                <div class="intro price1">
+                    <!-- Thông tin -->
+                    <div class="intro__title" onclick="information()">
+                        <p>Thông tin</p>
+                        <img class="size18px" src="./img/product-khanh/more.png" alt="">
+                    </div>
+                    <div class="intro-text" id="information">
+                        <p>LEVENTS® COLOR TEE</p>
+                        <p>
+                            Sản phẩm: LÌ VEN ORIGINAL 2.0 – Phiên bản bề mặt vải có lông, khắc phục tình trạng bị nhăn của sản phẩm.
+                        </p>
+                        <ul>
+                            <li>
+                                Lì ven Original không lông được áp dụng cho toàn bộ sản phẩm áo thun màu đen
+                            </li>
+                            <li>
+                                Lì ven Original 2.0 có lông vẫn được áp dụng cho các áo thun màu khác
+                            </li>
+                        </ul>
+                        <p>Kích cỡ: 1/2/3/4</p>
+                    </div>
+                </div>
+                <div class="intro price1">
+                    <div class="intro__title" onclick="SizeChart()">
+                        <p>Bảng size</p>
+                        <img class="size18px" src="./img/product-khanh/more.png" alt="">
+                    </div>
+                    <div class="intro-text" id="Size-chart">
+                        <p>
+                            Sản phẩm được may theo thông số tiêu chuẩn tương đối của người Việt Nam. Nếu bạn đang cân nhắc giữa hai kích cỡ, nên chọn kích cỡ lớn hơn.
+                        </p>
+                        <p>
+                            Kích cỡ 1: Chiều cao từ 1m50 – 1m65, cân nặng trên 55kg
+                            <br> Kích cỡ 2: Chiều cao từ 1m65 – 1m72, cân nặng dưới 65kg
+                            <br> Kích cỡ 3: Chiều cao từ 1m70 – 1m77, cân nặng dưới 80kg
+                            <br> Kích cỡ 4: Chiều cao trên 1m72, cân nặng dưới 95kg.
+                        </p>
+                        <img src="./img/product-khanh/Over-Tee-2022.jpg" alt="">
+                    </div>
+                </div>
+                <!-- Quy định đổi trả -->
+                <div class="intro price2">
+                    <div class="intro__title" onclick="returnPolicy()">
+                        <p>Quy định đổi trả</p>
+                        <img class="size18px" src="./img/product-khanh/more.png" alt="">
+                    </div>
+                    <div class="intro-text" id="return-policy">
+                        <p>
+                            Nhằm mang lại cho bạn sự tiện lợi và những trải nghiệm tuyệt vời khi mua hàng, tụi mình đã phát triển dịch vụ đổi hàng tận nơi và chính sách bảo hành.
+                        </p>
+                        <p>
+                            Tham khảo thêm thông tin về chính sách<a href="#">tại đây</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-cart">
+            <div class="container-cart">
+                <div class="form-cart-child">
+                    <h1>Giỏ hàng</h1>
+                    <button id="closeCart">Đóng</button>
+                </div>
+            </div>
+            <div class="container-cart">
+                <div class="form-cart-child">
+                    <h4>Giỏ hàng rỗng</h4>
+                </div>
+                <div class="listcart"></div>
+            </div>
+            <div class="container-cart">
+                <div class="form-cart-child">
+                    <h4>Tạm tính</h4>
+                    <h4>0 vnd</h4>
+                </div>
+            </div>
+            <div class="container-cart">
+                <div class="form-cart-btn">
+                    <button class="btn-buy">Thanh Toán</button>
+                </div>
+            </div>
+            <div class="container-cart">
+                <div class="form-cart-child">
+                    <h4>Có thể bạn quan tâm</h4>
+
+                </div>
+                <div class="form-cart-img">
+                    <div class="form-cart-img-child">
+                        <img width="130px" height="130px" src="./img/aoxamP1.jpeg" alt="">
+                    </div>
+                    <div class="form-cart-img-child">
+                        <div class="form-cart-tiltle">
+                            <p>Levents® Aquarium Tee/ Black<br>380,000 vnđ</p>
+                            <button class=" btn-cart">Bộ sưu tập mới</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-cart-img">
+                    <div class="form-cart-img-child">
+                        <img width="130px" height="130px" src="./img/aoxanh1.jpeg" alt="">
+                    </div>
+                    <div class="form-cart-img-child">
+                        <div class="form-cart-tiltle">
+                            <p>Levents® Aquarium Tee/ Black<br>380,000 vnđ</p>
+                            <button class=" btn-cart">Bộ sưu tập mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <section class="product-relative">
+        <div class="product-relative-title">
+            <h2>CÓ THỂ BẠN SẼ THÍCH</h2>
+        </div>
+        <div class="product-relative-uathich">
+            <div class="product-relative-list">
+                <a href="#"><img src="./img/aotrangK1.jpeg" alt=""></a>
+                <p>LEVENTS® 1 MILLION TEE/ WHITE</p>
+                <p>333.000 vnđ</p>
+            </div>
+            <div class="product-relative-list">
+                <a href="#"><img src="./img/aotrangP1.jpeg" alt=""></a>
+                <p>LEVENTS® WASH TEE/ IVORY WHITE</p>
+                <p>390.000 vnđ</p>
+            </div>
+            <div class="product-relative-list">
+                <a href="#"><img src="./img/aotrangT1.jpeg" alt=""></a>
+                <p>LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
+                <p>333.000 vnđ</p>
+            </div>
+            <div class="product-relative-list">
+                <a href="#"><img src="./img/aotulip1.jpeg" alt=""></a>
+                <p>LEVENTS® 2LIP TEE/ CREAM</p>
+                <p>390.000 vnđ</p>
+            </div>
+            <!-- <div class="product-relative-list">
+                <a href="#"><img src="./img/product-khanh/aopolo/polocream1.jpg" alt=""></a>
+                <p>LEVENTS® PEPPER SALT POLO/ GREY</p>
+                <p>380.000 vnđ</p>
+            </div>
+            <div class="product-relative-list">
+                <a href="#"><img src="./img/product-khanh/aopolo/pologray2.jpg" alt=""></a>
+                <p>LEVENTS® PEPPER SALT POLO/ CREAM</p>
+                <p>380.000 vnđ</p>
+            </div> -->
+        </div>
+        </div>
+    </section>
+    <section class="product-interest">
+        <div class="product-interest-title">
+            <h2>QUAN TÂM GẦN ĐÂY</h2>
+        </div>
+        <div class="product-interest-quantam">
+            <div class="product-interest-list">
+                <a href="#"><img src="./img/aotrangK1.jpeg" alt=""></a>
+                <p>LEVENTS® 1 MILLION TEE/ WHITE</p>
+                <p>333.000 vnđ</p>
+            </div>
+            <div class="product-interest-list">
+                <a href="#"><img src="./img/aotrangP1.jpeg" alt=""></a>
+                <p>LEVENTS® WASH TEE/ IVORY WHITE</p>
+                <p>390.000 vnđ</p>
+            </div>
+            <div class="product-interest-list">
+                <a href="#"><img src="./img/aotrangT1.jpeg" alt=""></a>
+                <p>LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
+                <p>333.000 vnđ</p>
+            </div>
+            <div class="product-interest-list">
+                <a href="#"><img src="./img/aotulip1.jpeg" alt=""></a>
+                <p>LEVENTS® 2LIP TEE/ CREAM</p>
+                <p>390.000 vnđ</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section>
+        <div class="map">
+            <div class="map-content">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4477879872834!2d106.66386531494177!3d10.776975262130133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f449e9d9bc9%3A0x303d1df7f8ed6194!2sLEVENTS!5e0!3m2!1svi!2s!4v1680846864926!5m2!1svi!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="map-content">
+                <h2>GỬI TIN NHẮN NGAY CHO LEVENTS<br> KHI BẠN CẦN HỖ TRỢ HOẶC CÓ THẮC MẮC NHÉ!</h2>
+                <input type="text" name="" id="text" class='input-name' placeholder="Họ và tên">
+                <div class="input-info">
+                    <input type="text" name="" id="email" class='input-email' placeholder="Email">
+                    <input type="text" name="" id="phone" class='input-phone' placeholder="Số điện thoại">
+                </div>
+                <input type="text" name="" id="text" class='input-reminder' placeholder="Lời nhắc">
+                <button class="input-send">Gửi đi</button>
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+    <!-- =================Form: Footer======================================= -->
+    <footer>
+        <div class="container-footer">
+            <div class=" container-footer-base container-footer-title">
+                <h3> VỀ CHÚNG TÔI</h3>
+                <p>Levents® – Popular Streetwear Brand</p>
+                <p>HỘ KINH DOANH Red Label</p>
+                <p>GPKD được cấp bởi Cục Cảnh sát QLHC & TTXH</p>
+                <p>Trụ sở hộ kinh doanh: 842 Sư Vạn Hạnh,<br> Phường 13, Quận 10, Tp. Hồ Chí Minh</p>
+                <p>Mä só thuê: 41J8031547</p>
+                <p>Ngày cấp: 06/07/2021</p>
+                <img class="bocongthuong" src="./img/bocongthuong.png" alt="">
+            </div>
+            <div class=" container-footer-base container-footer-title">
+                <h3 class="footer-title">LIÊN HỆ
+                    <div class="footer-title-contact">
+                        <p>Hotline</p>
+                        <a href="">1900 633 028</a>
+                    </div>
+                    <div class="footer-title-contact">
+                        <p>Email</p>
+                        <a href="">Customercare@levents.asia</a>
+                    </div>
+                    <div class="footer-title-contact">
+                        <p>Thứ Hai - Chủ nhật</p>
+                        <a href="">09:30 ~ 21:30</a>
+                    </div>
+                    <div class="footer-title-contact">
+                        <p>Email liên hệ công việc</p>
+                        <a href="">business@levents.asia</a>
+                    </div>
+
+
+                </h3>
+            </div>
+            <div class="container-footer-base container-footer-title">
+                <h3 class="footer-product">DANH MỤC SẢN PHẨM
+                    <div class="footer-product-1"> <a href="Shirts.html">Áo</a> </div>
+                    <div class="footer-product-1"> <a href="PagePantsLong.html">Quần</a></div>
+                    <div class="footer-product-1"> <a href="Jackets.html">Áo khoác</a></div>
+                    <div class="footer-product-1"> <a href="PageBalo.html">Balo</a></div>
+                    <div class="footer-product-1"> <a href="Accessory.html">Phụ kiện</a></div>
+                </h3>
+            </div>
+            <div class="container-footer-base container-footer-title">
+                <h3 class="footer-help">HỔ TRỢ
+                    <div class="footer-product-1"> <a href="Accout.html">Tài khoản</a> </div>
+                    <div class="footer-product-1"> <a href="">Chính sách vận chuyển</a></div>
+                    <div class="footer-product-1"> <a href="">Thanh toán trực tuyến</a></div>
+                    <div class="footer-product-1"> <a href="">Chính sách bảo mật</a></div>
+                    <div class="footer-product-1"> <a href="">Chính sách bảo hành</a></div>
+                </h3>
+            </div>
+            <div class="container-footer-base container-footer-title">
+                <h3 class="footer-shop">CỬA HÀNG
+                    <div class="footer-product-1"> <a href="">842 Sư Vạn Hạnh, Phường 12,<br> Quận 10, HCM</a> </div>
+                    <div class="footer-product-1"> <a href="">The New Playground, 04, Quận 1,<br> HCM</a></div>
+                    <div class="footer-product-1"> <a href="">54, Mậu Thân, Phường Xuân Khánh,<br> Quận Ninh Kiều, Cần Thơ</a></div>
+                    <div class="footer-product-1">
+                        <div class="footer-icon">
+                            <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                            <a href=""><i class="fa-brands fa-youtube"></i></a>
+
+                        </div>
+                    </div>
+
+                </h3>
+            </div>
+        </div>
+
+    </footer>
+    <div id="modal" class="modal">
+        <div class="modal__body">
+            <div id='containerForm' class="auth-form">
+                <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <span class="auth-form__switch-btn">Đăng Nhập</span>
+                        <button class="btnClose" id="btnCloseModal">x</button>
+                    </div>
+                    <form onsubmit="Login()" action="">
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <span class="auth-form__dangky">Bạn chưa có tài khoản?         
+                                <a id='btnDangKy' href="#" class="auth-form__dangky--theA">Đăng ký</a>
+                             </span>
+                                <input type="text" id="loginEmail" class="auth-form__input" placeholder="Email"> </div>
+                            <div class="auth-form__group">
+                                <div class="form__group--child">
+                                    <input type="password" id="passw" class="auth-form__input" placeholder="Password">
+                                    <div style="display: flex; align-items: center;" class="">
+                                        <input onclick='togglePassword()' type='checkbox' id='checkbox'>
+                                        <i class="check-pass fa-solid fa-eye"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="auth-form__aside">
+                            <p class="auth-form__policy">
+                                <input type="checkbox" value="None" class="checkbox" name="check" /> Ghi nhớ tài khoản
+                            </p>
+                        </div>
+                        <div id="loginError" class="error-message">Sai mật khẩu hoặc email</div>
+                        <div class="auth-form__controls">
+                            <button onclick="checkForm()" id='btnLoginSubmit' class="btn-dangky btn--primary">ĐĂNG NHẬP</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ======================Form:Đăng ký================================== -->
+    <div id="modal-dangky-btn" class="modal-dangky">
+        <div class="modal__body">
+            <div id='containerFormDangKy' class="auth-form-dangky">
+                <div class="auth-form__container__dangky">
+                    <div class="auth-form__header__dangky">
+                        <span class="auth-form__switch-btn__dangky">TẠO TÀI KHOẢN</span>
+                        <button id="btnCloseModalTwo">x</button>
+                    </div>
+                    <form onsubmit="signUp()" action="">
+                        <div class="auth-form__form__dangky">
+                            <div class="auth-form__group">
+                                <input type="text" name="" id="nameSign" class='auth-form__input__dangky' placeholder="Họ và tên">
+                                <input type="text" id="emailSign" class="auth-form__input__dangky" placeholder="Email">
+                                <!-- <input type="date" name="" id="birthday" class="auth-form__input__dangky" placeholder="Ngày sinh"> -->
+                                <!-- <input type="number" name="" id="phone"class="auth-form__input__dangky" placeholder="Số điện thoại">  -->
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" id="passwordSign" class="auth-form__input__dangky" placeholder="Mật khẩu">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" id="again-passw" class="auth-form__input__dangky" placeholder="Xác nhận mật khẩu">
+                            </div>
+                        </div>
+
+                        <div class="auth-form__aside-dangky">
+                            <p class="auth-form__policy-dangky">
+                                <input type="checkbox" value="None" class="checkbox" name="check"> Tôi đồng ý với các điều khoản và điều kiện, chính sách bảo mật và chính sách cookie
+                            </p>
+                        </div>
+                        <div class="auth-form__controls__dangky">
+                            <button onclick="addData()" id="btn-create-accout" class="btn-dangky btn--primary">TẠO</button>
+                        </div>
+                        <div id="email-error" class="auth-form__error" style="display: none;">Email đã được sử dụng</div>
+
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="./js/functions/pages/CreateAccout.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/functions/pages/accout.js"></script>
+    <!-- Lấy thông tin -->
+    <script src="./js/functions/validate-form.js"></script>
+    <!-- Login -->
+    <script src="./js/functions/product.js"></script>
+    <script src="./js/functions/pages/mockdata.js"></script>
+    <script src="/js/functions/pages/togglePassword.js"></script>
+
+    <script src="./js/functions/pages/amount.js"></script>
+    <script src="./js/functions/pages/intro.js"></script>
+    <script src="./js/functions/pages/itemcustom.js"></script>
+    <script src="./js/functions/pages/productdetail.js"></script>
+</body>
+
+
+</html>
