@@ -1,0 +1,7 @@
+.btn-buy:hover{
+    background-color: black;
+}
+
+.cart .active {
+    right: 0;
+}
