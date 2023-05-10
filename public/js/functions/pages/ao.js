@@ -1,2 +1,0 @@
-// Áo khoác
-renderListProducts();
