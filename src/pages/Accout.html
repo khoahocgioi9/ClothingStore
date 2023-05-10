@@ -13,53 +13,17 @@
     <link rel="stylesheet" href="../../public/.css/dropdown.css">
     <link rel="stylesheet" href="../../public/.css/background.css">
     <link rel="stylesheet" href="../../public/.css/product.css">
-    <link rel="stylesheet" href="../../public/.css/formdangky.css">
-    <link rel="stylesheet" href="../../public/.css/video.css">
-    <link rel="stylesheet" href="../../public/.css/setClothing.css">
     <link rel="stylesheet" href="../../public/.css/slider.css">
     <link rel="stylesheet" href="../../public/.css/footer.css">
-    <link rel="stylesheet" href="../../public/.css/map.css">
     <link rel="stylesheet" href="../../public/.css/search.css">
     <link rel="stylesheet" href="../../public/.css/formcart.css">
     <link rel="stylesheet" href="../../public/.css/accout.css">
+    <link rel="stylesheet" href="../../public/.css/ao.css">
+    <link rel="stylesheet" href="../../public/.css/frm_global.css">
     <title>Tài khoản - Levents®</title>
 </head>
 
 <body>
-    <!-- ======================Form:Search-Notice================================== -->
-    <div class="modal-search">
-        <div id='containerSearch'>
-            <div class="search">
-                <div class="search-btn">
-                    <h1 class="search-btn-text">Levents®</h1>
-                </div>
-                <div class="search-btn">
-                    <div class="search-btn-timkiem">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input class="input-search-1" type="text" placeholder="Search..." />
-                    </div>
-                    <div class="search-btn-child">
-                        <h2> Cụm từ tìm kiếm phổ biến</h2>
-                        <div class="search-title">
-                            <a href="" class="search-title-child">Áo levents</a>
-                            <a href="" class="search-title-child">Quần dài</a>
-                            <a href="" class="search-title-child">Áo khoác</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="search-btn">
-                    <div class="search-btn-cancle">
-                        <button id="formCancle" class="btn-timkiem">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-notice">
-        <div class="notice">
-            <p>Mua càng nhiều,Giảm càng sâu.<br>Lên đến 90.000đ</p>
-        </div>
-    </div>
     <!-- ======================Form:HEADER================================== -->
     <div class="headerFisrt">
         <div class="headerFirst-text">
@@ -265,6 +229,16 @@
         </div>
     </div>
     <!-- ======================Form:Account================================== -->
+    <div class="product">
+        <div class="main">
+            <div class="bc">
+                <div class="con">
+                    <a href="index.html">Trang chủ</a> /
+                    <a class="a2">Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="accout">
         <div class="information-child-1">
             <div class="form-info">
@@ -347,146 +321,93 @@
             <input type="text" id="new-voucher-input">
             <button id="add-voucher-btn">Thêm Voucher</button>
         </div>
-        <!-- <div class="form-content2" id="exchange-form">
-            <h2>Đổi thưởng</h2>
-            <form>
-              <label for="name">Họ và tên:</label>
-              <input type="text" id="name" name="name" required>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-              <label for="phone">Số điện thoại:</label>
-              <input type="tel" id="phone" name="phone" required>
-              <label for="product">Sản phẩm đổi thưởng:</label>
-              <select id="product" name="product">
-                <option value="product1">Sản phẩm 1</option>
-                <option value="product2">Sản phẩm 2</option>
-                <option value="product3">Sản phẩm 3</option>
-              </select>
-              <button type="submit">Đổi thưởng</button>
-            </form>
-          </div> -->
+
         <div id="favorite-products">
             <h3 class="title">Sản phẩm yêu thích</h3>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/ao1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Áo Levents</h4>
-                        <p class="product-price">Giá: 500.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                  </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/Aokhoac/jacketden1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Jackets Levents</h4>
-                        <p class="product-price">Giá: 800.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/aotulip1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Áo Levents</h4>
-                        <p class="product-price">Giá: 300.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/Aokhoac/aokhoactrang1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Hoodie Levents</h4>
-                        <p class="product-price">Giá: 750.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/quandai/jeanXanh1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Jeans Levents</h4>
-                        <p class="product-price">Giá: 580.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
-            <ul class="product-list">
-                <li class="product-item">
-                    <img src="../../public/static resources/img/ao1.jpeg" alt="Áo Levents" width="200" height="200">
-                    <div class="product-info">
-                        <h4 class="product-name">Áo Levents</h4>
-                        <p class="product-price">Giá: 500.000đ</p>
-                        <label for="size-1">Size:</label>
-                        <select name="size" id="size-1">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                        <label for="quantity-1">Số lượng:</label>
-                        <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
-                        <button class="buy-btn" data-product="1">Thêm vào giỏ</button>
-                    </div>
-                </li>
-                <!--Thêm các sản phẩm khác vào đây-->
-            </ul>
+            <div class="frm__flex__center">
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/ao1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Áo Levents</h4>
+                            <p class="product-price">Giá: 500.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/Aokhoac/jacketden1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Jackets Levents</h4>
+                            <p class="product-price">Giá: 800.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>      
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/aotulip1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Áo Levents</h4>
+                            <p class="product-price">Giá: 300.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>          
+            </div>
+
+            <div class="frm__flex__center">
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/Aokhoac/aokhoactrang1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Hoodie Levents</h4>
+                            <p class="product-price">Giá: 750.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/quandai/jeanXanh1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Jeans Levents</h4>
+                            <p class="product-price">Giá: 580.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>
+                <ul class="product-list">
+                    <li class="product-item">
+                        <img src="../../public/static resources/img/ao1.jpeg" alt="Áo Levents" width="200" height="200">
+                        <div class="product-info">
+                            <h4 class="product-name">Áo Levents</h4>
+                            <p class="product-price">Giá: 500.000đ</p>
+                            <label for="quantity-1">Số lượng:</label>
+                            <input type="number" name="quantity" id="quantity-1" value="1" min="1" max="10">
+                            <button class="mini-btn-form" data-product="1">Thêm vào giỏ</button>
+                        </div>
+                    </li>
+                    <!--Thêm các sản phẩm khác vào đây-->
+                </ul>                
+            </div>
+
 
             <div id="cart">
                 <h3>Giỏ hàng</h3>
@@ -570,92 +491,12 @@
         </div>
 
     </footer>
-    <!-- ======================Form:Đăng Nhập================================== -->
-    <div id="modal" class="modal">
-        <div class="modal__body">
-            <div id='containerForm' class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <span class="auth-form__switch-btn">Đăng Nhập</span>
-                        <button class="btnClose" id="btnCloseModal">x</button>
-                    </div>
-                    <form onsubmit="Login()" action="">
-                        <div class="auth-form__form">
-                            <div class="auth-form__group">
-                                <span class="auth-form__dangky">Bạn chưa có tài khoản?         
-                                <a id='btnDangKy' href="#" class="auth-form__dangky--theA">Đăng ký</a>
-                             </span>
-                                <input type="text" id="loginEmail" class="auth-form__input" placeholder="Email"> </div>
-                            <div class="auth-form__group">
-                                <div class="form__group--child">
-                                    <input type="password" id="passw" class="auth-form__input" placeholder="Password">
-                                    <div style="display: flex; align-items: center;" class="">
-                                        <input onclick='togglePassword()' type='checkbox' id='checkbox'>
-                                        <i class="check-pass fa-solid fa-eye"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="auth-form__aside">
-                            <p class="auth-form__policy">
-                                <input type="checkbox" value="None" class="checkbox" name="check" /> Ghi nhớ tài khoản
-                            </p>
-                        </div>
-                        <div id="loginError" class="error-message">Sai mật khẩu hoặc email</div>
-                        <div class="auth-form__controls">
-                            <button onclick="checkForm()" id='btnLoginSubmit' class="btn-dangky btn--primary">ĐĂNG NHẬP</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ======================Form:Đăng ký================================== -->
-    <div id="modal-dangky-btn" class="modal-dangky">
-        <div class="modal__body">
-            <div id='containerFormDangKy' class="auth-form-dangky">
-                <div class="auth-form__container__dangky">
-                    <div class="auth-form__header__dangky">
-                        <span class="auth-form__switch-btn__dangky">TẠO TÀI KHOẢN</span>
-                        <button id="btnCloseModalTwo">x</button>
-                    </div>
-                    <form onsubmit="signUp()" action="">
-                        <div class="auth-form__form__dangky">
-                            <div class="auth-form__group">
-                                <input type="text" name="" id="nameSign" class='auth-form__input__dangky' placeholder="Họ và tên">
-                                <input type="text" id="emailSign" class="auth-form__input__dangky" placeholder="Email">
-                                <!-- <input type="date" name="" id="birthday" class="auth-form__input__dangky" placeholder="Ngày sinh"> -->
-                                <!-- <input type="number" name="" id="phone"class="auth-form__input__dangky" placeholder="Số điện thoại">  -->
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password" id="passwordSign" class="auth-form__input__dangky" placeholder="Mật khẩu">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password" id="again-passw" class="auth-form__input__dangky" placeholder="Xác nhận mật khẩu">
-                            </div>
-                        </div>
 
-                        <div class="auth-form__aside-dangky">
-                            <p class="auth-form__policy-dangky">
-                                <input type="checkbox" value="None" class="checkbox" name="check"> Tôi đồng ý với các điều khoản và điều kiện, chính sách bảo mật và chính sách cookie
-                            </p>
-                        </div>
-                        <div class="auth-form__controls__dangky">
-                            <button onclick="addData()" id="btn-create-accout" class="btn-dangky btn--primary">TẠO</button>
-                        </div>
-                        <div id="email-error" class="auth-form__error" style="display: none;">Email đã được sử dụng</div>
-
-                </div>
-            </div>
-            </form>
-        </div>
-
-    </div>
-    <script src="./js/functions/pages/accout.js"></script>
-    <script src="./js/functions/pages/CreateAccout.js"></script>
-    <script src="./js/app.js"></script>
-    <script src="./js/functions/pages/home.js"></script>
-    <script src="./js/functions/storage.js"></script>
+    <script src="../../public/js/functions/pages/accout.js"></script>
+    <script src="../../public/js/functions/pages/CreateAccout.js"></script>
+    <script src="../../public/js/app.js"></script>
+    <script src="../../public/js/functions/pages/home.js"></script>
+    <script src="../../public/js/functions/storage.js"></script>
 </body>
 
 </html>

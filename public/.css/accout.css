@@ -1,8 +1,8 @@
 .accout {
+  margin:30px 10px;
   width: 100%;
-  height: 400px;
+  height: 600px;
   display: flex;
-  justify-content: flex-start;
 }
 .accout-child {
   margin-top: 20px;
@@ -57,8 +57,7 @@
   padding: 10px 0;
 }
 .form-info {
-  overflow-y: scroll; /* Thêm thanh cuộn dọc */
-  max-height: 400px; /* Đặt giới hạn độ cao tối đa để hiển thị thanh cuộn */
+  max-height: 700px; /* Đặt giới hạn độ cao tối đa để hiển thị thanh cuộn */
   background-color: #ccc;
   position: absolute;
 }
@@ -101,7 +100,10 @@
   margin: 0 auto;
 }
 .form-content {
-  margin: 0 auto;
+  max-width: 100%;
+  max-height: 700px;
+  padding: 50px;
+  margin: 0 30px;
 }
 .form-content.show {
   display: block;
@@ -355,15 +357,15 @@ li {
 }
 /* SẨN PHẨM YÊU THÍCH */
 #favorite-products {
-  overflow-y: scroll; /* Thêm thanh cuộn dọc */
-  max-height: 400px; /* Đặt giới hạn độ cao tối đa để hiển thị thanh cuộn */
-  background-color: #ccc;
+  max-width: 1000px;
+  max-height: 700px; /* Đặt giới hạn độ cao tối đa để hiển thị thanh cuộn */
+
 }
 #favorite-products {
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 0 auto;
+  margin: 0 30px;
 }
 
 #favorite-products h3 {
