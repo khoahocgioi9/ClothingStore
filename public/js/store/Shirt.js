@@ -1,3 +1,18 @@
+//===============Filter products at store pages==============
+const selectSortBy = document.getElementById('select-sort-by');
+const selectSortByOptions = selectSortBy.getElementsByTagName('option');
+const urlParams = new URLSearchParams(window.location.search);
+const sortBy = urlParams.get('sort-by');
+console.log(sortBy);
+for (let option of selectSortByOptions) {
+	if (option.value === sortBy) {
+		option.selected = 'selected';
+	}
+}
+selectSortBy.onchange = function () {
+	window.location.href = `/src/pages/store/Shirt.html?${this.name}=${this.value}`;
+};
+
 //Fake data used while waiting for fetch data from server function
 let productsShirt = [
 	{

@@ -35,11 +35,22 @@ containerFormDangKy.addEventListener('click', function (event) {
 modalDangKy.addEventListener('click', function () {
 	modalDangKy.style.display = 'none';
 });
-// ==================FROM:SEARCH
+// ==================FROM:SEARCH============================
 const modalSearch = document.querySelector('.modal-search');
 const formSearch = document.getElementById('iconSearch');
 formSearch.addEventListener('click', function () {
 	modalSearch.style.display = 'block';
+});
+
+const searchBtn = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+searchBtn.addEventListener('click', function () {
+	let inputString = searchInput.value.trim();
+	if (inputString === '') {
+		return;
+	}
+
+	window.location.href = `/src/pages/PageSearchResult.html?s=${inputString}`;
 });
 
 const formCancle = document.getElementById('formCancle');
@@ -58,12 +69,38 @@ closeCart.addEventListener('click', function () {
 	formCart.style.display = 'none';
 });
 // ===============================
-
+// TODO: fetch notice messages from server
+let noticeMessages = [
+	'Mua càng nhiều, Giảm càng sâu. Lên đến 90.000đ',
+	'FREESHIP cho hoá đơn từ 1.000.000',
+	'Giảm giá các sản phẩm áo',
+];
 const headerNotice = document.querySelector('.header-notice');
-const Notice = document.querySelector('.notice');
+const notice = document.querySelector('.notice');
+let toggleNotice = true;
+
+(function () {
+	const headerNotice = document.querySelector('.header__cart-notice');
+	headerNotice.innerHTML =
+		noticeMessages.length >= 100 ? '99+' : noticeMessages.length;
+	for (let i = 0; i < noticeMessages.length; i++) {
+		notice.innerHTML += `
+        <p>${noticeMessages[i]}</p>
+		<br>
+        `;
+	}
+})();
+
 headerNotice.addEventListener('click', function () {
-	Notice.style.display = 'block';
+	if (toggleNotice) {
+		notice.style.display = 'block';
+	} else {
+		notice.style.display = 'none';
+	}
+	toggleNotice = !toggleNotice;
 });
+
+//=================================
 
 function myFunction() {
 	let dots = document.getElementById('dots');

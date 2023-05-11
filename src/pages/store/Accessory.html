@@ -50,7 +50,7 @@
 		<div class="headerTwo">
 			<div class="headerTwo-text">
 				<div class="headerTwo-title">
-					<a href="index.html">
+					<a href="/src/pages/index.html">
 						<h1>Levent</h1>
 					</a>
 					<div class="headerTwo-text-one">
@@ -63,26 +63,23 @@
 						<button class="headerTwo-title-btn">
 							<p>Sản phẩm yêu thích</p>
 						</button>
-						<button id="iconSearch" class="headerTwo-title-btn">
+						<button id='iconSearch' class="headerTwo-title-btn">
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
 						<button id="iconCart" class="headerTwo-title-btn">
 							<i class="fa-sharp fa-solid fa-bag-shopping"></i>
+							
 						</button>
-						<button id="formLogin" class="headerTwo-title-btn">
-							<i class="fa-solid fa-user"></i>
+						<button id='formLogin' class="headerTwo-title-btn">
+							<i  class="fa-solid fa-user"></i>
 						</button>
 						<button class="headerTwo-title-btn">
 							<!-- <i class="fa-solid fa-flag"></i> -->
 							<div class="flag-vn">
-								<img
-									style="margin-right: 12px"
-									src="https://levents.asia/template/assets/images/svg/ic-vn.svg"
-									alt=""
-								/>
-							</div>
+								<img style="margin-right: 12px; " src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt="">
 						</button>
 					</div>
+	
 				</div>
 			</div>
 		</div>
@@ -101,7 +98,7 @@
 					<ul class="sub-menu">
 						<span class="pesuado"></span>
 						<li>
-							<a href="./Shirt.html"
+							<a href="/src/pages/store/Shirt.html"
 								>Áo
 								<i class="fa-solid fa-angle-down"></i>
 							</a>
@@ -112,13 +109,13 @@
 							</ul>
 						</li>
 						<li>
-							<a href="./Pants.html"
+							<a href="/src/pages/store/Pants.html"
 								>Quần
 								<i class="fa-solid fa-angle-down"></i>
 							</a>
 							<ul class="sub-menu-3">
 								<li>
-									<a href="./LongPants.html"
+									<a href="/src/pages/store/LongPants.html"
 										>Quần dài
 										<i class="fa-solid fa-angle-down"></i>
 									</a>
@@ -132,7 +129,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="./Jacket.html"
+							<a href="/src/pages/store/Jacket.html"
 								>Áo khoác
 								<i class="fa-solid fa-angle-down"></i>
 							</a>
@@ -143,9 +140,9 @@
 								<li><a href="#">Jacket</a></li>
 							</ul>
 						</li>
-						<li><a href="./Balo.html">Balo</a></li>
+						<li><a href="/src/pages/store/Balo.html">Balo</a></li>
 						<li>
-							<a href="./Accessory.html"
+							<a href="/src/pages/store/Accessory.html"
 								>Phụ kiện
 								<i class="fa-solid fa-angle-down"></i>
 							</a>
@@ -161,11 +158,11 @@
 				</li>
 
 				<li>
-					<a href="PageSales.html">Giảm giá</a>
+					<a href="/src/pages/PageSales.html">Giảm giá</a>
 					<div class="line-Under"></div>
 				</li>
 				<li>
-					<a href="BoPhoi.html">Bộ sưu tập</a>
+					<a href="/src/pages/BoPhoi.html">Bộ sưu tập</a>
 					<div class="line-Under"></div>
 				</li>
 				<li>
@@ -173,7 +170,7 @@
 					<div class="line-Under"></div>
 				</li>
 				<li>
-					<a href="Contact.html">Liên hệ</a>
+					<a href="/src/pages/Contact.html">Liên hệ</a>
 					<div class="line-Under"></div>
 				</li>
 				<li>
@@ -206,6 +203,7 @@
 						<div class="search-btn-timkiem">
 							<i class="fa-solid fa-magnifying-glass"></i>
 							<input
+								id="search-input"
 								class="input-search-1"
 								type="text"
 								placeholder="Search..."
@@ -214,19 +212,31 @@
 						<div class="search-btn-child">
 							<h2>Cụm từ tìm kiếm phổ biến</h2>
 							<div class="search-title">
-								<a href="" class="search-title-child"
+								<a
+									href="/src/pages/store/Shirt.html"
+									class="search-title-child"
 									>Áo levents</a
 								>
-								<a href="" class="search-title-child"
-									>Quần dài</a
+								<a
+									href="/src/pages/store/Pants.html"
+									class="search-title-child"
+									>Quần levents</a
 								>
-								<a href="" class="search-title-child"
-									>Áo khoác</a
+								<a
+									href="/src/pages/store/Jacket.html"
+									class="search-title-child"
+									>Áo khoác levents</a
 								>
 							</div>
 						</div>
 					</div>
+
 					<div class="search-btn">
+						<div class="search-btn-cancle">
+							<button id="search-btn" class="btn-timkiem">
+								Search
+							</button>
+						</div>
 						<div class="search-btn-cancle">
 							<button id="formCancle" class="btn-timkiem">
 								Cancel
@@ -238,7 +248,7 @@
 		</div>
 		<div class="modal-notice">
 			<div class="notice">
-				<p>Mua càng nhiều,Giảm càng sâu.<br />Lên đến 90.000đ</p>
+				
 			</div>
 		</div>
 		<!--=================Form:Main Product======================================== -->
@@ -251,7 +261,17 @@
 							<a href="index.html">Cửa hàng</a> /
 							<a class="a2">Phụ kiện</a>
 						</p>
+						<div>
+							Lọc bởi 
+							<select id="select-sort-by" class="rs-form" name="sort-by">
+								<option value disabled selected> Lọc bởi</option>
+								<option value="price-down"> Giá từ thấp đến cao</option>
+								<option value="price-up"> Giá từ cao đến thấp</option>
+								<option value="popular"> Phổ biến</option>
+							</select>
+						</div>
 					</div>
+					
 				</div>
 			</div>
 			<div id="list-product-accessory" class="product-shirt"></div>

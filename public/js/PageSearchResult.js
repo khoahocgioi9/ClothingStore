@@ -1,23 +1,11 @@
-//===============Filter products at store pages==============
-const selectSortBy = document.getElementById('select-sort-by');
-
-(function () {
-	const selectSortByOptions = selectSortBy.getElementsByTagName('option');
-	const urlParams = new URLSearchParams(window.location.search);
-	const sortBy = urlParams.get('sort-by');
-	console.log(selectSortByOptions);
-	for (let option of selectSortByOptions) {
-		if (option.value === sortBy) {
-			option.selected = 'selected';
-		}
-	}
-	selectSortBy.onchange = function () {
-		window.location.href = `/src/pages/store/Pants.html?${this.name}=${this.value}`;
-	};
-})();
-
 //Fake data used while waiting for fetch data from server function
-let productsPants = [
+//TODO: get data from server using input string
+const pathResult = document.getElementById('path-result');
+const urlParams = new URLSearchParams(window.location.search);
+const searchStringParam = urlParams.get('s');
+pathResult.innerHTML = `<b>#${searchStringParam}</b>`;
+
+let productsSearched = [
 	{
 		productId: 1,
 		productName: 'Quần',
@@ -110,17 +98,15 @@ let productsPants = [
 
 let start = 0;
 const limit = 2;
-const listProductShirt = document.getElementById('list-product-pants');
+const listProductShirt = document.getElementById('list-product-shirt');
 const showMoreBtn = document.getElementById('show_more_btn');
-function loadMoreProductsPants() {
-	//TODO: get count shirt products from server
-	if (start > productsPants.length - 1) {
+function loadMoreProductsSearched() {
+	if (start > productsSearched.length - 1) {
 		showMoreBtn.remove();
 		return;
 	}
 
-	//TODO: fetch paginated data from the server
-	const products = productsPants.slice(start, start + limit);
+	const products = productsSearched.slice(start, start + limit);
 
 	for (let i = 0; i < products.length; i++) {
 		listProductShirt.innerHTML += `
@@ -147,4 +133,4 @@ function loadMoreProductsPants() {
 	start += limit;
 }
 
-loadMoreProductsPants();
+loadMoreProductsSearched();
