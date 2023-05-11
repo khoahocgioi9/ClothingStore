@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../../public/.css/formcart.css">
     <link rel="stylesheet" href="../../public/.css/yourCart.css">
 
+
     <title>LEVENTS®</title>
 </head>
 
@@ -62,7 +63,6 @@
                     </button>
                     <button id="iconCart" class="headerTwo-title-btn">
                         <i class="fa-sharp fa-solid fa-bag-shopping"></i>
-                        
                     </button>
                     <button id='formLogin' class="headerTwo-title-btn">
                         <i  class="fa-solid fa-user"></i>
@@ -392,9 +392,21 @@
     </div>
     </div>
     <!-- cart -->
-    <div class="cart" style="position: fixed; top: 0; right: 0; width: 360px; min-height: 100vh; padding: 20px; box-shadow: -2px 0 4px hsl(0, 4%, 15%); background: white; margin-top: 5rem; ">
+    <div 
+    class="cart" 
+    style="position: fixed; 
+    top: 0; 
+    right: 0; 
+    width: 360px; 
+    min-height: 100vh; 
+    padding: 20px; 
+    display: none;
+    box-shadow: -2px 0 4px hsl(0, 4%, 15%); 
+    background: white; 
+    margin-top: 5rem; 
+    ">
         <div class="cart-title-box">
-            <h2 class="cart-title" style="text-align: center; font-size: 1.5rem; font-weight: 600; margin-top: 1.75rem; ">Your Cart</h2>
+            <h2 class="cart-title" style="text-align: center; font-size: 1.5rem; font-weight: 600; margin-top: 1.75rem; transition: 0.3s;">Your Cart</h2>
         </div>
 
         <div class="cart-content">
@@ -408,7 +420,7 @@
                 <div class="detail-box" style="display: grid; row-gap: 0.5rem;">
                     <div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">EARBUDS</div>
 
-                    <div class="cart-price" style="font-weight: 600;">700$</div>
+                    <div class="cart-price" style="font-weight: 600;">700.12 vnd</div>
 
                     <input type="number" value="1" class="cart-quantity" style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
                 </div>
@@ -419,7 +431,7 @@
         <!-- total -->
         <div class="total" style="display: flex; justify-content: flex-end; margin-top: 1.5rem; border-top: 1px solid;">
             <div class="total-title" style="font-size: 1rem; font-weight: 600; margin-top: 5px;">Total</div>
-            <div class="total-price" style="margin-left: 0.5rem; margin-top: 5px">0$</div>
+            <div class="total-price" style="margin-left: 0.5rem; margin-top: 5px">0 vnd</div>
         </div>
         <!-- buy button -->
         <button type="button" class="btn-buy" style="display: flex; margin: 1.5rem auto 0 auto; padding: 12px 20px; border: none; background-color: coral; color: white; font-size: 1rem; font-weight: 500; cursor: pointer; ">Thanh toán</button>
@@ -608,20 +620,7 @@
 
     </div>
 
-    <!-- javascript for cart -->
-    <!-- <script>
-        let cartIcon = document.querySelector('#cart-icon');
-        let cart = document.querySelector('.cart');
-        let closeCart = document.querySelector('#close-cart');
 
-        cartIcon.onclick = () =>{
-            cart.classList.add("active");
-
-        }
-
-
-    </script> -->
-    <!-- end code for process cart -->
     <script src="./js/functions/pages/CreateAccout.js"></script>
     <script src="./js/data/products.js"></script>
     <script src="./js/app.js"></script>
@@ -640,6 +639,85 @@
     <script src="./js/functions/pages/mockdata.js"></script>
     <script src="/js/functions/pages/togglePassword.js"></script>
     <script src="./js/functions/pages/slideimg.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+
+        <!-- javascript for cart -->
+        <script>
+            let cartIcon = document.querySelector('#iconCart');
+            let cart = document.querySelector(".cart");
+            let closeCart = document.querySelector("#close-cart");
+            let bodyElement = document.querySelector('body');
+    
+            // show cart
+            cartIcon.onclick = () => {
+                cart.style.display = 'block';
+                cart.style.zIndex = '2';
+                bodyElement.classList.add('active');
+                updateTotal();
+            };
+            //close u cart
+            closeCart.onclick = ()=>{
+                cart.style.display = 'none';
+            }
+
+            // cart working js
+            if (document.readyState == 'loading'){
+                document.addEventListener('DOMContentLoaded', ready);
+            } else{
+                ready();
+            }
+
+            function ready(){
+                //remove item from cart
+                var removeCartButtons =  document.getElementsByClassName('cart-remove');
+                for(var i=0; i<removeCartButtons.length; i++){
+                    var button = removeCartButtons[i];
+                    button.addEventListener('click', removeCartItem);
+                }
+                //quantity change
+                var quantityinputs = document.getElementsByClassName('cart-quantity');
+                for(var i = 0; i < quantityinputs.length; i++){
+                    var input = quantityinputs[i];
+                    input.addEventListener("change", quantityChanged);
+                }
+                // add to cart
+                var addCart = document.getElementsByClassName('')
+            }
+
+            // remove items from cart
+            function removeCartItem(event){
+                var buttonClicked = event.target;
+                buttonClicked.parentElement.remove();
+                updateTotal();
+            }
+            // quantity change
+            function quantityChanged(event){
+                var input = event.target;
+                if(isNaN(input.value)||input.value <=0){
+                    input.value = 1;
+                }
+                updateTotal();
+            }
+            //update total
+            function updateTotal(){
+                var cartContent = document.getElementsByClassName('cart-content')[0];
+                var cartBoxes = cartContent.getElementsByClassName('cart-box');
+                var total = 0;
+                for(var i = 0; i < cartBoxes.length; i++){
+                    var cartBox = cartBoxes[i];
+                    var priceElement = cartBox.getElementsByClassName('cart-price')[0];
+                    var quantityElement = cartBox.getElementsByClassName('cart-quantity')[0];
+                    var price = parseFloat(priceElement.innerText.replace("vnd", ""));
+                    var quantity = quantityElement.value;
+                    total = total + ( price * quantity );
+
+                    total = Math.round(total*100)/100;
+
+                    document.getElementsByClassName("total-price")[0].innerText = total + " vnd";
+                }
+            }
+        </script>
+        <!-- end code for process cart -->
 </body>
 
 </html>
