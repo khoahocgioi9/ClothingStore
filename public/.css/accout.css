@@ -294,11 +294,13 @@
 .voucher-list {
   background-color: #f1f1f1;
   border-radius: 5px;
-  padding: 10px;
-  margin: 0 auto;
+  max-width: 100%;
+  max-height: 700px;
+  padding: 50px;
+  margin: 0 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   display: none;
 }
 
@@ -434,3 +436,4 @@ li {
   margin: 0;
   margin-bottom: 5px;
 }
+

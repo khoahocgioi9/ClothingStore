@@ -74,22 +74,6 @@ btnVouhcer.addEventListener("click", voucherForm());
 const LogOut1 = document.getElementById("logout-1");
 LogOut1.addEventListener("click", logout);
 
-function DangXuat() {
-    // Xóa thông tin đăng nhập
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
-    // Đổi trang web
-    window.location.href = "index.html";
-    // Hiển thị thông báo đăng xuất thành công
-    var logoutMessage = document.createElement("div");
-    logoutMessage.innerText = "Bạn đã đăng xuất thành công!";
-    logoutMessage.classList.add("logout-message");
-    document.body.appendChild(logoutMessage);
-    // Ẩn thông báo sau 3 giây
-    setTimeout(function() {
-        logoutMessage.style.display = "none";
-    }, 3000);
-}
 // HIỂN THỊ THÔNG TIN
 function showInfo() {
     const infoContainer = document.getElementById("info-container");

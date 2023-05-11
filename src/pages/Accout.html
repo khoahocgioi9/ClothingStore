@@ -242,19 +242,14 @@
     <div class="accout">
         <div class="information-child-1">
             <div class="form-info">
-                <button id="btn-show-form" onclick="toggleForm()">
+                <button id="btn-show-form" >
                     <p > Thông tin cá nhân</p>
                 </button>
-                <button onclick="showOrderForm()">
-                   <p>Xem đơn hàng</p> 
-                </button>
-                <button onclick="voucherForm()" id="toggle-voucher-btn">    
+
+                <button id="toggle-voucher-btn">    
                     <p>Voucher của tôi</p>
                 </button>
-                <button id="btn-point" href="">     
-                    <p>Đổi thưởng</p>
-                </button>
-                <button onclick="showFavoriteProducts()">
+                <button id="btn-wish-list">
                     <p>Sản phẩm yêu thích</p>
                 </button>
                 <button onclick="DangXuat()" id="logout-1">
@@ -262,55 +257,56 @@
                 </button>
             </div>
         </div>
-        <div class="form-content form-ttcn" style="display:none;">
+
+        <div id="inforUser" class="form-content form-ttcn" style="display:none;">
             <h2>Thông tin cá nhân</h2>
+            <br>
+            <br>
+            <br>
+
             <form class="content">
-                <label for="name">Họ tên:</label>
+                <!-- <label for="name">Họ tên:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <label for="phone">Số điện thoại:</label>
                 <input type="tel" id="phone" name="phone" required>
                 <label for="address">Địa chỉ:</label>
-                <textarea id="address" name="address" required></textarea>
-                <input type="submit" onclick="saveData()" value="Cập nhật">
+                <textarea id="address" name="address" required></textarea> -->
+
+                <div class="col-1">
+                    <input type="text" id="fullnameInput" name="fullname" class="frm__border" placeholder="Họ và tên" value="" readonly>
+
+                </div>
+                <div class="range_spcBtw frm__flex__spcBtw">
+                    <div class="col-2">
+                        <input type="text" id="emailInput" name="gmail" class="frm__border" placeholder="Email" readonly>
+
+                    </div>
+                    <div class="col-2">
+                        <input type="text" id="phonenumberInput" name="phonenumber" class="frm__border" placeholder="Số điện thoại" readonly>
+
+                    </div>
+                </div>
+                <div class="range_spcBtw frm__flex__spcBtw">
+                    <div class="col-3">
+                        <input type="date" id="dobInput" name="birthday" class="frm__border" value="" readonly>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" id="addrInput" name="address" class="frm__border" placeholder="Địa chỉ" value="" readonly>
+
+                    </div>
+                </div>
+                <div class="frm__flex__spcbtw">
+                    <button id="edit-btn" class="btn-edit">Chỉnh sửa</button>
+                    <button id="save-btn" class="btn-edit" disabled>Lưu</button>
+                </div>
+                
+<!-- 
+                <input type="submit" class="mini-btn-form" onclick="saveData()" value="Cập nhật"> -->
             </form>
         </div>
-        <div class="form-donhang" style="display: none;">
-            <div class="form-content1" id="order-history-form">
-                <h2>Đơn hàng của tôi</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Ngày đặt hàng</th>
-                            <th>Tổng tiền</th>
-                            <th>Tình trạng đơn hàng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ORD-001</td>
-                            <td>01/01/2023</td>
-                            <td>1,000,000 đ</td>
-                            <td>Đã giao hàng</td>
-                        </tr>
-                        <tr>
-                            <td>ORD-002</td>
-                            <td>02/01/2023</td>
-                            <td>2,000,000 đ</td>
-                            <td>Chưa giao hàng</td>
-                        </tr>
-                        <tr>
-                            <td>ORD-003</td>
-                            <td>03/01/2023</td>
-                            <td>3,000,000 đ</td>
-                            <td>Đang xử lý</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    
         <div id="voucher-list" class="voucher-list">
             <h3>Danh sách voucher:</h3>
             <ul>
@@ -492,11 +488,14 @@
 
     </footer>
 
-    <script src="../../public/js/functions/pages/accout.js"></script>
+    <script src="../../public/js/functions/pages/toggle.js"></script>
     <script src="../../public/js/functions/pages/CreateAccout.js"></script>
     <script src="../../public/js/app.js"></script>
     <script src="../../public/js/functions/pages/home.js"></script>
     <script src="../../public/js/functions/storage.js"></script>
+    <script src="../../public/js/data/data-user.js"></script>
+    <script src="../../public/js/functions/pages/cart_inforUser.js"></script>
+    <script src="../../public/js/functions/pages/edit.js"></script>
 </body>
 
 </html>
