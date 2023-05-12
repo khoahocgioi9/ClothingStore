@@ -12,12 +12,12 @@ const selectSortBy = document.getElementById('select-sort-by');
 		}
 	}
 	selectSortBy.onchange = function () {
-		window.location.href = `/src/pages/store/Jacket.html?${this.name}=${this.value}`;
+		window.location.href = `/src/pages/store/Accessory.html?${this.name}=${this.value}`;
 	};
 })();
 
 //Fake data used while waiting for fetch data from server function
-let productsJacket = [
+let productsAccessory = [
 	{
 		productId: 1,
 		productName: 'Quần',
@@ -110,17 +110,17 @@ let productsJacket = [
 
 let start = 0;
 const limit = 2;
-const listProductShirt = document.getElementById('list-product-jacket');
+const listProductShirt = document.getElementById('list-product-accessory');
 const showMoreBtn = document.getElementById('show_more_btn');
-function loadMoreProductsJacket() {
+function loadMoreProductsAccessory() {
 	//TODO: get count shirt products from server
-	if (start > productsJacket.length - 1) {
+	if (start > productsAccessory.length - 1) {
 		showMoreBtn.remove();
 		return;
 	}
 
 	//TODO: fetch paginated data from the server
-	const products = productsJacket.slice(start, start + limit);
+	const products = productsAccessory.slice(start, start + limit);
 
 	for (let i = 0; i < products.length; i++) {
 		listProductShirt.innerHTML += `
@@ -138,13 +138,11 @@ function loadMoreProductsJacket() {
 					products[i].productName,
 				]}</h1>
                 <p class="product-shirt-title ">${[products[i].price]}</p>
-                <button>Thêm vào giỏ hàng</button>
             </div>
         </div>
         `;
 	}
-
 	start += limit;
 }
 
-loadMoreProductsJacket();
+loadMoreProductsAccessory();
