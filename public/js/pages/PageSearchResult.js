@@ -1,108 +1,35 @@
-//Fake data used while waiting for fetch data from server function
-//TODO: get data from server using input string
 const pathResult = document.getElementById('path-result');
 const urlParams = new URLSearchParams(window.location.search);
-const searchStringParam = urlParams.get('s');
-pathResult.innerHTML = `<b>#${searchStringParam}</b>`;
+const searchProductString = urlParams.get('s');
+pathResult.innerHTML = `<b>#${searchProductString}</b>`;
 
-let productsSearched = [
-	{
-		productId: 1,
-		productName: 'Quần',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/ao1.jpeg',
-		avatar2: '/public/static resources/img/ao2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 'ProductDetail.html',
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 2,
-		productName: 'Áo',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aoxanh1.jpeg',
-		avatar2: '/public/static resources/img/aoxanh2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 3,
-		productName: 'Phụ kiện',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrang1.jpeg',
-		avatar2: '/public/static resources/img/aotrang2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 4,
-		productName: 'Quần',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrangT1.jpeg',
-		avatar2: '/public/static resources/img/aotrangT2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 5,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrangK1.jpeg',
-		avatar2: '/public/static resources/img/aotrangK2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 6,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aoxamP1.jpeg',
-		avatar2: '/public/static resources/img/aoxamP2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 7,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotulip1.jpeg',
-		avatar2: '/public/static resources/img/aotulip2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-];
+const apiUrl = `https://lavent-clone.vercel.app/api/v1/product?searchProductString=${searchProductString}`;
+let productsSearched;
+const response = fetch(apiUrl)
+	.then((responseJson) => responseJson.json())
+	.then((json) => {
+		productsSearched = json.products;
+		loadMoreProductsSearched();
+	});
 
 let start = 0;
 const limit = 2;
-const listProductShirt = document.getElementById('list-product-shirt');
+const listProductShirt = document.getElementById('list-product');
+const loadingAnimation = document.getElementById('loading-animation');
 const showMoreBtn = document.getElementById('show_more_btn');
+
 function loadMoreProductsSearched() {
+	loadingAnimation.style.display = 'block';
+	showMoreBtn.style.display = 'none';
+
 	if (start > productsSearched.length - 1) {
+		loadingAnimation.remove();
 		showMoreBtn.remove();
+
+		if (productsSearched.length <= 0 && start <= 0) {
+			listProductShirt.innerHTML = '<p>Không tìm thấy sản phẩm nào!</p>';
+		}
+
 		return;
 	}
 
@@ -111,25 +38,31 @@ function loadMoreProductsSearched() {
 	for (let i = 0; i < products.length; i++) {
 		listProductShirt.innerHTML += `
         <div class="product-shirt-noibat">
-        <a class="product-shirt-a" href="">
+        <a class="product-shirt-a" onclick="window.location.href = '/src/pages/ProductDetail.html?productId=${
+			products[i]._id
+		}';">
             <img class="product-shirt-1 "src="${[
-				products[i].avatar,
+				products[i].thumbnail,
 			]}" alt="MatSau">
             <img class="product-shirt-2 "src="${[
-				products[i].avatar2,
+				products[i].thumbnail,
 			]}" alt="MatTruoc">
         </a>
             <div class="product-shirt-price">
-                <h1 class="product-shirt-title">${[
-					products[i].productName,
-				]}</h1>
-                <p class="product-shirt-title ">${[products[i].price]}</p>
+                <h1 class="product-shirt-title">${[products[i].name]}</h1>
+                <p class="product-shirt-title ">${[
+					products[i].price.toLocaleString('it-IT', {
+						style: 'currency',
+						currency: 'VND',
+					}),
+				]}</p>
             </div>
         </div>
         `;
 	}
-
+	loadingAnimation.style.display = 'none';
+	showMoreBtn.style.display = 'block';
 	start += limit;
 }
 
-loadMoreProductsSearched();
+showMoreBtn.style.display = 'none';

@@ -1,149 +1,69 @@
 //===============Filter products at store pages==============
 const selectSortBy = document.getElementById('select-sort-by');
-
-(function () {
-	const selectSortByOptions = selectSortBy.getElementsByTagName('option');
-	const urlParams = new URLSearchParams(window.location.search);
-	const sortBy = urlParams.get('sort-by');
-	console.log(selectSortByOptions);
-	for (let option of selectSortByOptions) {
-		if (option.value === sortBy) {
-			option.selected = 'selected';
-		}
+const selectSortByOptions = selectSortBy.getElementsByTagName('option');
+const urlParams = new URLSearchParams(window.location.search);
+const sortBy = urlParams.get('sort-by');
+for (let option of selectSortByOptions) {
+	if (option.value === sortBy) {
+		option.selected = 'selected';
 	}
-	selectSortBy.onchange = function () {
-		window.location.href = `/src/pages/store/Jacket.html?${this.name}=${this.value}`;
-	};
-})();
+}
+selectSortBy.onchange = function () {
+	window.location.href = `/src/pages/store/Jacket.html?${this.name}=${this.value}`;
+};
 
-//Fake data used while waiting for fetch data from server function
-let productsJacket = [
-	{
-		productId: 1,
-		productName: 'Quần',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/ao1.jpeg',
-		avatar2: '/public/static resources/img/ao2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 'ProductDetail.html',
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 2,
-		productName: 'Áo',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aoxanh1.jpeg',
-		avatar2: '/public/static resources/img/aoxanh2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 3,
-		productName: 'Phụ kiện',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrang1.jpeg',
-		avatar2: '/public/static resources/img/aotrang2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 4,
-		productName: 'Quần',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrangT1.jpeg',
-		avatar2: '/public/static resources/img/aotrangT2.jpeg',
-		moreImage: ['', '', '', ''],
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 5,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotrangK1.jpeg',
-		avatar2: '/public/static resources/img/aotrangK2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 6,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aoxamP1.jpeg',
-		avatar2: '/public/static resources/img/aoxamP2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-	{
-		productId: 7,
-		productName: 'Áo khoác',
-		price: '560,000vnd',
-		avatar: '/public/static resources/img/aotulip1.jpeg',
-		avatar2: '/public/static resources/img/aotulip2.jpeg',
-		alias: '',
-		description: '',
-		amount: 0,
-		viewCount: 0,
-		likeCount: 0,
-	},
-];
+let pageIndex = 1;
+const numberOfProductsPerPage = 2;
+const typeOfProduct = 2;
 
-let start = 0;
-const limit = 2;
-const listProductShirt = document.getElementById('list-product-jacket');
+const apiUrl = `https://lavent-clone.vercel.app/api/v1/product?typeOfProduct=${typeOfProduct}&sortBy=${sortBy}&numberOfProductsPerPage=${numberOfProductsPerPage}`;
+const listProductJacket = document.getElementById('list-product-jacket');
+const loadingAnimation = document.getElementById('loading-animation');
 const showMoreBtn = document.getElementById('show_more_btn');
-function loadMoreProductsJacket() {
-	//TODO: get count shirt products from server
-	if (start > productsJacket.length - 1) {
+async function loadMoreProductsJacket() {
+	loadingAnimation.style.display = 'block';
+	showMoreBtn.style.display = 'none';
+
+	const response = await fetch(apiUrl + `&pageIndex=${pageIndex}`);
+	const responseJson = await response.json();
+	const products = responseJson.products;
+
+	const numberOfProducts = products.length;
+	if (numberOfProducts <= 0) {
+		loadingAnimation.remove();
 		showMoreBtn.remove();
 		return;
 	}
 
-	//TODO: fetch paginated data from the server
-	const products = productsJacket.slice(start, start + limit);
-
-	for (let i = 0; i < products.length; i++) {
-		listProductShirt.innerHTML += `
+	for (let i = 0; i < numberOfProducts; i++) {
+		listProductJacket.innerHTML += `
         <div class="product-shirt-noibat">
-        <a class="product-shirt-a" href="">
+        <a class="product-shirt-a" onclick="window.location.href = '/src/pages/ProductDetail.html?productId=${
+			products[i]._id
+		}';">
             <img class="product-shirt-1 "src="${[
-				products[i].avatar,
+				products[i].thumbnail,
 			]}" alt="MatSau">
             <img class="product-shirt-2 "src="${[
-				products[i].avatar2,
+				products[i].thumbnail,
 			]}" alt="MatTruoc">
         </a>
             <div class="product-shirt-price">
-                <h1 class="product-shirt-title">${[
-					products[i].productName,
-				]}</h1>
-                <p class="product-shirt-title ">${[products[i].price]}</p>
+                <h1 class="product-shirt-title">${[products[i].name]}</h1>
+                <p class="product-shirt-title ">${[
+					products[i].price.toLocaleString('it-IT', {
+						style: 'currency',
+						currency: 'VND',
+					}),
+				]}</p>
             </div>
         </div>
         `;
 	}
 
-	start += limit;
+	loadingAnimation.style.display = 'none';
+	showMoreBtn.style.display = 'block';
+	pageIndex++;
 }
 
 loadMoreProductsJacket();
