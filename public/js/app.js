@@ -59,15 +59,15 @@ formCancle.addEventListener('click', function () {
 });
 
 //
-const formCart = document.querySelector('.form-cart');
-const iconCart = document.getElementById('iconCart');
-iconCart.addEventListener('click', function () {
-	formCart.style.display = 'block';
-});
-const closeCart = document.getElementById('closeCart');
-closeCart.addEventListener('click', function () {
-	formCart.style.display = 'none';
-});
+// const formCart = document.querySelector('.form-cart');
+// const iconCart = document.getElementById('iconCart');
+// iconCart.addEventListener('click', function () {
+// 	formCart.style.display = 'block';
+// });
+// const closeCart = document.getElementById('closeCart');
+// closeCart.addEventListener('click', function () {
+// 	formCart.style.display = 'none';
+// });
 // ===============================
 // TODO: fetch notice messages from server
 let noticeMessages = [
@@ -78,7 +78,6 @@ let noticeMessages = [
 const headerNotice = document.querySelector('.header-notice');
 const notice = document.querySelector('.notice');
 let toggleNotice = true;
-
 (function () {
 	const headerNotice = document.querySelector('.header__cart-notice');
 	headerNotice.innerHTML =

@@ -124,7 +124,6 @@ function loadMoreProductsSearched() {
 					products[i].productName,
 				]}</h1>
                 <p class="product-shirt-title ">${[products[i].price]}</p>
-                <button>Thêm vào giỏ hàng</button>
             </div>
         </div>
         `;

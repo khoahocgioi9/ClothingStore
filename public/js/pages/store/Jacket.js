@@ -12,12 +12,12 @@ const selectSortBy = document.getElementById('select-sort-by');
 		}
 	}
 	selectSortBy.onchange = function () {
-		window.location.href = `/src/pages/store/Pants.html?${this.name}=${this.value}`;
+		window.location.href = `/src/pages/store/Jacket.html?${this.name}=${this.value}`;
 	};
 })();
 
 //Fake data used while waiting for fetch data from server function
-let productsPants = [
+let productsJacket = [
 	{
 		productId: 1,
 		productName: 'Quần',
@@ -110,17 +110,17 @@ let productsPants = [
 
 let start = 0;
 const limit = 2;
-const listProductShirt = document.getElementById('list-product-pants');
+const listProductShirt = document.getElementById('list-product-jacket');
 const showMoreBtn = document.getElementById('show_more_btn');
-function loadMoreProductsPants() {
+function loadMoreProductsJacket() {
 	//TODO: get count shirt products from server
-	if (start > productsPants.length - 1) {
+	if (start > productsJacket.length - 1) {
 		showMoreBtn.remove();
 		return;
 	}
 
 	//TODO: fetch paginated data from the server
-	const products = productsPants.slice(start, start + limit);
+	const products = productsJacket.slice(start, start + limit);
 
 	for (let i = 0; i < products.length; i++) {
 		listProductShirt.innerHTML += `
@@ -138,7 +138,6 @@ function loadMoreProductsPants() {
 					products[i].productName,
 				]}</h1>
                 <p class="product-shirt-title ">${[products[i].price]}</p>
-                <button>Thêm vào giỏ hàng</button>
             </div>
         </div>
         `;
@@ -147,4 +146,4 @@ function loadMoreProductsPants() {
 	start += limit;
 }
 
-loadMoreProductsPants();
+loadMoreProductsJacket();

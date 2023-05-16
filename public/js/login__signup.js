@@ -1,4 +1,4 @@
-function signUp() {
+function signup() {
     var username = document.getElementById("nameSign").value;
     var email = document.getElementById("emailSign").value;
     var password = document.getElementById("passwordSign").value;
@@ -63,7 +63,7 @@ function signUp() {
     document.getElementById("modal").style.display = "block";
 }
 
-function Login() {
+function login() {
     var email = document.getElementById("loginEmail").value;
     var password = document.getElementById("passw").value;
     // Kiểm tra tính hợp lệ của email và mật khẩu
