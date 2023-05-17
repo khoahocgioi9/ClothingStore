@@ -3,6 +3,10 @@ let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 let bodyElement = document.querySelector('body');
 
+// call api to get data for cart
+
+
+
 // show cart
 cartIcon.onclick = () => {
 	cart.style.display = 'block';
