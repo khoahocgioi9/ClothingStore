@@ -63,6 +63,8 @@ function removeCartItem(event) {
 	updateTotal();
 	updateCartInStorage();
 }
+
+
 // quantity change
 function quantityChanged(event) {
 	console.log(event);
@@ -83,6 +85,8 @@ function ReplaceNumberWithCommas(yourNumber) {
 	//Combines the two sections
 	return n.join('.');
 }
+
+
 //update total
 function updateTotal() {
 	var cartContent = document.getElementsByClassName('cart-content')[0];
@@ -104,6 +108,8 @@ function updateTotal() {
 		total + ',000' + ' vnd';
 }
 
+
+
 //add to cart
 function addCartClicked() {
 	//lay id va lưu
@@ -115,9 +121,11 @@ function addCartClicked() {
 
 
 	addProductToCart(title, price, productImg, quantity);
+	alert("Thêm thành công!");
 	updateTotal();
 }
 
+//add product to cart
 function addProductToCart(title, price, productImg, quantity) {
 	var cartShopBox = document.createElement('div');
 	cartShopBox.classList.add('cart-box');
@@ -161,7 +169,10 @@ function addProductToCart(title, price, productImg, quantity) {
 		.getElementsByClassName('cart-quantity')[0]
 		.addEventListener('change', quantityChanged);
 }
-//buy button
+
+
+
+//Buy button
 function buyButtonClicked() {
 	alert('Don dat hang se duoc xu li');
 	
@@ -170,6 +181,7 @@ function buyButtonClicked() {
 		cartContent.removeChild(cartContent.firstChild);
 	}
 	updateTotal();
+	window.location.href = "Cart.html";
 }
 
 
