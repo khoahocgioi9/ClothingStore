@@ -2,10 +2,14 @@ let cartIcon = document.querySelector('#iconCart');
 let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 let bodyElement = document.querySelector('body');
-
-// call api to get data for cart
-
-
+let addToCartElement = document.getElementsByClassName('btn-muahang add')[0];
+//add to cart from detail product
+// addToCartElement.onclick = () =>{
+// 	cart.style.display = 'block';
+// 	// cart.style.zIndex = '2';
+// 	// bodyElement.classList.add('active');
+// 	updateTotal();
+// }
 
 // show cart
 cartIcon.onclick = () => {
@@ -13,6 +17,7 @@ cartIcon.onclick = () => {
 	// cart.style.zIndex = '2';
 	// bodyElement.classList.add('active');
 	updateTotal();
+	getCartFromStorage();
 };
 //close u cart
 closeCart.onclick = () => {
@@ -40,11 +45,11 @@ function ready() {
 		input.addEventListener('change', quantityChanged);
 	}
 	// add to cart
-	// var addCart = document.getElementsByClassName('add-cart');
-	// for (var i = 0; i < quantityinputs.length; i++) {
-	// 	var button = addCart[i];
-	// 	button.addEventListener('click', addCartClicked);
-	// }
+	var addCart = document.getElementsByClassName('btn-muahang add');
+	for (var i = 0; i < addCart.length; i++) {
+		var button = addCart[i];
+		button.addEventListener('click', addCartClicked);
+	}
 	// buy button work
 	document
 		.getElementsByClassName('btn-buy')[0]
@@ -56,14 +61,17 @@ function removeCartItem(event) {
 	var buttonClicked = event.target;
 	buttonClicked.parentElement.remove();
 	updateTotal();
+	updateCartInStorage();
 }
 // quantity change
 function quantityChanged(event) {
+	console.log(event);
 	var input = event.target;
 	if (isNaN(input.value) || input.value <= 0) {
 		input.value = 1;
 	}
 	updateTotal();
+	updateCartInStorage();
 }
 
 //phan cach so 0 bang dau ","
@@ -97,50 +105,55 @@ function updateTotal() {
 }
 
 //add to cart
-function addCartClicked(event) {
-	var button = event.target;
-	var shopProducts = button.parentElement;
-	var title =
-		shopProducts.getElementsByClassName('product-title')[0].innerText;
-	var price = shopProducts.getElementsByClassName('price')[0].innerText;
-	var productImg =
-		shopProducts.getElementsByClassName('product-shirt-1')[0].src;
-	addProductToCart();
+function addCartClicked() {
+	//lay id va lưu
+    var title = document.getElementsByClassName('summary__title')[0].innerHTML;
+	var productImg = document.getElementsByClassName('productImg')[0].src;
+	var price = document.getElementsByClassName('summary__price')[0].innerHTML;
+	var quantity = document.getElementsByClassName('amount')[0].value;
+	//save to local storage
 
-	function addProductToCart(title, price, productImg) {
-		var cartShopBox = document.createElement('div');
-		cartShopBox.classList.add('cart-box');
-		var cartItems = document.getElementsByClassName('cart-content')[0];
-		var cartItemsNames =
-			cartItems.getElementsByClassName('cart-product-title');
-		for (var i = 0; i < cartItemsNames.length; i++) {
-			if (cartItemsNames[i].innerText == title) {
-				alert('da them vao gio hang');
-				return;
-			}
+
+	addProductToCart(title, price, productImg, quantity);
+	updateTotal();
+}
+
+function addProductToCart(title, price, productImg, quantity) {
+	var cartShopBox = document.createElement('div');
+	cartShopBox.classList.add('cart-box');
+	var cartItems = document.getElementsByClassName('cart-content')[0];
+	var cartItemsNames =
+		cartItems.getElementsByClassName('cart-product-title');
+	for (var i = 0; i < cartItemsNames.length; i++) {
+		if (cartItemsNames[i].innerText == title) {
+			alert('Đã có trong giỏ hàng');
+			return;
 		}
 	}
 
+
 	//the box khi them vao gio hang
 	var cartBoxContent = `
-                <img src="${productImg}"
-                    style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
-                <div class="detail-box" style="display: grid; row-gap: 0.5rem;">
-                    <div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">${title}</div>
+	<img src="${productImg}"
+		style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
+	<div class="detail-box" style="display: grid; row-gap: 0.5rem;">
+		<div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">${title}</div>
 
-                    <div class="cart-price" style="font-weight: 600;">${price} vnd</div>
+		<div class="cart-price" style="font-weight: 600;">${price}</div>
 
-                    <input type="number" value="1" class="cart-quantity"
-                        style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
-                </div>
-                <!-- Remove cart -->
-                <i class="fa-solid fa-trash cart-remove"
-                    style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
+		<input type="number" value="${quantity}" class="cart-quantity"
+			style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
+	</div>
+	<!-- Remove cart -->
+	<i class="fa-solid fa-trash cart-remove"
+		style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
+	
+</div>
         `;
-
 	cartShopBox.innerHTML = cartBoxContent;
 	cartItems.append(cartShopBox);
 
+	
 	cartShopBox
 		.getElementsByClassName('cart-remove')[0]
 		.addEventListener('click', removeCartItem);
@@ -148,13 +161,105 @@ function addCartClicked(event) {
 		.getElementsByClassName('cart-quantity')[0]
 		.addEventListener('change', quantityChanged);
 }
-
 //buy button
 function buyButtonClicked() {
 	alert('Don dat hang se duoc xu li');
+	
 	var cartContent = document.getElementsByClassName('cart-content')[0];
 	while (cartContent.hasChildNodes()) {
 		cartContent.removeChild(cartContent.firstChild);
 	}
 	updateTotal();
 }
+
+
+
+
+//luu gio hang vao local storage
+function updateCartInStorage() {
+	var cartItems = document.getElementsByClassName('cart-box');
+	var cartData = [];
+  
+	// Lặp qua từng phần tử trong giỏ hàng và lấy thông tin cần lưu trữ
+	for (var i = 0; i < cartItems.length; i++) {
+	  var cartBox = cartItems[i];
+	  var title = cartBox.getElementsByClassName('cart-product-title')[0].innerText;
+	  var price = cartBox.getElementsByClassName('cart-price')[0].innerText;
+	  var quantity = cartBox.getElementsByClassName('cart-quantity')[0].value;
+	  var productImg = cartBox.getElementsByClassName('cart-img')[0].src;
+  
+	  // Tạo đối tượng chứa thông tin của sản phẩm
+	  var product = {
+		title: title,
+		price: price,
+		quantity: quantity,
+		productImg: productImg
+	  };
+  
+	  // Thêm đối tượng sản phẩm vào mảng cartData
+	  cartData.push(product);
+	}
+  
+	// Chuyển đổi mảng cartData thành chuỗi JSON
+	var jsonString = JSON.stringify(cartData);
+  
+	// Lưu chuỗi JSON vào localStorage với một khóa (key) là 'cartData'
+	localStorage.setItem('cartData', jsonString);
+  }
+
+
+  function getCartFromStorage() {
+	var cartData = localStorage.getItem('cartData');
+	var cartItemsContainer = document.querySelector('.cart-content');
+	cartItemsContainer.innerHTML = '';
+  
+	// Kiểm tra xem dữ liệu giỏ hàng có tồn tại trong localStorage không
+	if (cartData) {
+	  var cartItems = JSON.parse(cartData);
+  
+	  // Lặp qua từng sản phẩm trong giỏ hàng và hiển thị thông tin ra
+	  for (var i = 0; i < cartItems.length; i++) {
+		var product = cartItems[i];
+  
+		// Tạo phần tử HTML để hiển thị thông tin sản phẩm
+		var cartShopBox = document.createElement('div');
+		cartShopBox.classList.add('cart-box');
+		
+		var cartBoxContent = `
+		  <img src="${product.productImg}"
+			style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
+		  <div class="detail-box" style="display: grid; row-gap: 0.5rem;">
+			<div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">${product.title}</div>
+			<div class="cart-price" style="font-weight: 600;">${product.price}</div>
+			<input type="number" value="${product.quantity}" class="cart-quantity"
+			  style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
+		  </div>
+		  <!-- Remove cart -->
+		  <i class="fa-solid fa-trash cart-remove"
+			style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
+		`;
+  
+		cartShopBox.innerHTML = cartBoxContent;
+		cartItemsContainer.appendChild(cartShopBox);
+  
+		var removeCartButton = cartShopBox.querySelector('.cart-remove');
+		removeCartButton.addEventListener('click', removeCartItem);
+  
+		var quantityInput = cartShopBox.querySelector('.cart-quantity');
+		quantityInput.addEventListener('change', quantityChanged);
+	  }
+	}
+  }
+  
+// Hàm xử lý sự kiện lưu thông tin giỏ hàng vào local storage
+function saveCartToStorage() {
+	// Lấy thông tin giỏ hàng từ giao diện và lưu vào biến cartData
+  
+	// Lưu cartData vào local storage
+	localStorage.setItem('cart', JSON.stringify(cartData));
+  }
+  
+  // Gắn hàm xử lý sự kiện vào sự kiện beforeunload
+  window.addEventListener('beforeunload', saveCartToStorage);
+  
+  

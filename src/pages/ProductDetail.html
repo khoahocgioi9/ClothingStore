@@ -234,26 +234,21 @@
         </div>
 
         <div class="cart-content">
-            <div class="cart-box" style="display: grid; 
-                grid-template-columns: 32% 50% 18%;
-                gap: 1rem; 
-                margin-top: 1.25rem;
-                ">
+            <div class="cart-box" style="display: none;">
                 <img src="../../public/static resources/img/ao2.jpeg"
                     style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
                 <div class="detail-box" style="display: grid; row-gap: 0.5rem;">
                     <div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">LEVENTS® COLOR TEE</div>
 
-                    <div class="cart-price" style="font-weight: 600;">360,000 vnd</div>
+                    <div class="cart-price" style="font-weight: 600;">0 vnd</div>
 
                     <input type="number" value="1" class="cart-quantity"
                         style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
                 </div>
-                <!-- Remove cart -->
                 <i class="fa-solid fa-trash cart-remove"
                     style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
-                
             </div>
+            
         </div>
         <!-- total -->
         <div class="total" style="display: flex; justify-content: flex-end; margin-top: 1.5rem; border-top: 1px solid;">
@@ -279,13 +274,13 @@
                 <a href="#">Cửa hàng</a>
             </li>
             <li>
-                <a class="path-name-product" href="#">LEVENTS® COLOR TEE</a>
+                <a class="breadcrumb-product" href="#">LEVENTS® COLOR TEE</a>
             </li>
         </ul>
     </div>
     <div class="product-detail">
         <div class="product-detail__avatar">
-            <img src="../../public/static resources/img/ao1.jpeg" id="mainImage" alt="">
+            <img class="productImg" src="../../public/static resources/img/ao1.jpeg" id="mainImage" alt="">
         </div>
         <div class="product-detail__summary">
             <div class="summary__title">
@@ -295,8 +290,8 @@
                 380,000 vnđ
             </div>
             <div class="product-detail__item">
-                <div class="text">Màu sắc:
-                    <span class="name-text">Black</span>
+                <!-- <div class="text">Màu sắc:
+                    <span class="name-text"></span>
                 </div>
                 <div class="item__custom">
                     <div class="item__custom__choose_1">
@@ -308,23 +303,23 @@
                     <div class="item__custom__choose_3">
                         <img src="../../public/static resources/img/aotrang1.jpeg" onclick="changeImage('aotrang1')" id="aotrang1" alt="">
                     </div>
-                </div>
+                </div> -->
 
                 <div class="item__size">
                     <div class="text">
                         Size
                     </div>
                     <div class="choose__size">
-                        <div class="size-audio highlight">
+                        <div class="size-audio highlight" style="display: none;">
                             S
                         </div>
-                        <div class="size-audio">
+                        <div class="size-audio"  style="display: none;">
                             L
                         </div>
-                        <div class="size-audio">
+                        <div class="size-audio" style="display: none;">
                             XL
                         </div>
-                        <div class="size-audio">
+                        <div class="size-audio" style="display: none;">
                             XXL
                         </div>
                     </div>
@@ -347,9 +342,8 @@
                     </div>
                 </div>
                 <div class="oder">
-                    <button id="submit" class="btn-muahang add" type="submit">
-                        <a href="Cart.html">Thêm vào giỏ</a>
-                        
+                    <button id="submit" class="btn-muahang add" type="button" style="cursor: pointer;">
+                        Thêm vào giỏ
                     </button>
                     <a href="#">
                         <img class="sizelike" src="../../public/static resources/img/product-khanh/heart.jpg" alt="">
@@ -364,17 +358,9 @@
                     </div>
                     <div class="intro-text" id="information">
                         <p>LEVENTS® COLOR TEE</p>
-                        <p>
                             Sản phẩm: LÌ VEN ORIGINAL 2.0 – Phiên bản bề mặt vải có lông, khắc phục tình trạng bị nhăn của sản phẩm.
-                        </p>
-                        <ul>
-                            <li>
                                 Lì ven Original không lông được áp dụng cho toàn bộ sản phẩm áo thun màu đen
-                            </li>
-                            <li>
                                 Lì ven Original 2.0 có lông vẫn được áp dụng cho các áo thun màu khác
-                            </li>
-                        </ul>
                         <p>Kích cỡ: 1/2/3/4</p>
                     </div>
                 </div>
