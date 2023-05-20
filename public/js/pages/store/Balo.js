@@ -39,7 +39,7 @@ async function loadMoreProductsBalo() {
 		listProductShirt.innerHTML += `
         <div class="product-shirt-noibat">
         <a class="product-shirt-a" onclick="window.location.href = '/src/pages/ProductDetail.html?productId=${
-			products[i]._id
+			products[i].id
 		}';">
             <img class="product-shirt-1 "src="${[
 				products[i].thumbnail,
