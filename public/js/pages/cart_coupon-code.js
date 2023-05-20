@@ -18,7 +18,10 @@ applyCouponButton.addEventListener('click', function() {
         let discountValue = productPrice - productPrice * discountRate;
         discountValue = Math.round(discountValue * 100) / 100;
         discountValue = ReplaceNumberWithCommas(discountValue*1000);
-        document.querySelector('#discount-value').textContent = discountValue + ",000 vnđ";
+        if(discountValue < 1000){
+            discountValue = ReplaceNumberWithCommas(discountValue*1000);
+        }
+        document.querySelector('#discount-value').textContent = discountValue + " vnđ";
         document.querySelector('#isnotavailable').style.display = 'none';
         document.querySelector('#discount-value').style.display = 'block';
     } else {
@@ -29,6 +32,7 @@ applyCouponButton.addEventListener('click', function() {
         document.querySelector('#isnotavailable').textContent = unsucc;
         document.querySelector('#isnotavailable').style.display = 'block';
         document.querySelector('#available').style.display = 'none'
-        document.querySelector('#discount-value').style.display = 'none';
+        // document.querySelector('#discount-value').style.display = 'none';
+        // document.querySelector('.price-total-sum').textContent
     }
 });
