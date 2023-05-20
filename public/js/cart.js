@@ -17,8 +17,9 @@ let addToCartElement = document.getElementsByClassName('btn-muahang add')[0];
 // show cart
 cartIcon.onclick = () => {
 	cart.style.display = 'block';
-	updateTotal();
+	
 	getCartFromStorage();
+	updateTotal();
 };
 //close u cart
 closeCart.onclick = () => {
