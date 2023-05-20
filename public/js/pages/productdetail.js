@@ -20,9 +20,11 @@ for(let i = 0; i < sizeBtnElms.length; i++) {
 // }
 
 async function loadDataProductDetail(){
-    const idProduct = location.pathname.split('/')[3]; //get id in URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var productID = urlParams.get("productId");
 
-    let response = await fetch(`https://lavent-clone.vercel.app/api/v1/product/7a09d297-46a4-47d9-b7a7-f103802ab0b8`);
+    let response = await fetch(`https://lavent-clone.vercel.app/api/v1/product/${productID}`);
+    console.log(productID);
     response.json().then((result) => {
         // document.getElementsByClassName('breadcrumb-product').innerText = "kiendz";
         document.getElementsByClassName('breadcrumb-product')[0].innerHTML = result[0].name;

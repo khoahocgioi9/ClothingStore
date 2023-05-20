@@ -184,6 +184,7 @@ function buyButtonClicked() {
 	}
 	updateTotal();
 	window.location.href = "Cart.html";
+	
 }
 
 
@@ -367,7 +368,7 @@ function showProductList(productList) {
   }
   
   // Gọi hàm displayProductListFromStorage() để hiển thị danh sách sản phẩm từ Local Storage
-  displayProductListFromStorage();
+//   displayProductListFromStorage();
 
 
 
@@ -416,7 +417,7 @@ function showProductList(productList) {
 // Lấy thông tin đơn hàng lưu lại và gọi api khi click thanh toán
 const buttonPaymentConfirm = document.getElementById('payment-confirm');
 buttonPaymentConfirm.onclick = () =>{
-	saveInformationToLocalStorage();
+	// saveInformationToLocalStorage();
 }
 
 // function getInformationAddress() {
@@ -479,11 +480,6 @@ buttonPaymentConfirm.onclick = () =>{
   
 // 	return address;
 //   }
-function getInformationAddress() {
-
-  
-	return address;
-  }
   
   
   
@@ -496,11 +492,6 @@ function getInformationAddress() {
 		{ id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' }
 	  ];
 	
-	//   const selects = [
-	// 	{ id: 'province', message: 'Vui lòng chọn tỉnh/thành phố.' },
-	// 	{ id: 'district', message: 'Vui lòng chọn quận/huyện.' },
-	// 	{ id: 'ward', message: 'Vui lòng chọn phường.' }
-	//   ];
 	
 	  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	  const phonePattern = /^\d{10}$/;
@@ -534,15 +525,6 @@ function getInformationAddress() {
 		}
 	  }
 	
-	//   for (const select of selects) {
-	// 	const element = document.getElementById(select.id);
-	// 	const value = element.value;
-	// 	if (!value) {
-	// 	  alert(select.message);
-	// 	  element.focus();
-	// 	  return;
-	// 	}
-	//   }
 	
 	
 	  const address = {
@@ -584,17 +566,16 @@ function getInformationAddress() {
 	  cartItems
 	};
 	
-	console.log(information)
 	return information;
   }
   
   
-  function postInformationToDatabase() {
-	const information = getInformation();
+//   function postInformationToDatabase() {
+// 	const information = getInformation();
   
-	// Gọi hàm API để post dữ liệu lên database
-	// Ghi code API ở đây
-  }
+// 	// Gọi hàm API để post dữ liệu lên database
+// 	// Ghi code API ở đây
+//   }
 
   
   //kiểm tra thông tin được lưu đúng chưa
