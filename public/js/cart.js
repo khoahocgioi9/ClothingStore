@@ -177,13 +177,12 @@ function addProductToCart(title, price, productImg, quantity) {
 
 //Buy button
 function buyButtonClicked() {
-	alert('Don dat hang se duoc xu li');
-	
-	var cartContent = document.getElementsByClassName('cart-content')[0];
-	while (cartContent.hasChildNodes()) {
-		cartContent.removeChild(cartContent.firstChild);
-	}
-	updateTotal();
+	// var cartContent = document.getElementsByClassName('cart-content')[0];
+	// while (cartContent.hasChildNodes()) {
+	// 	cartContent.removeChild(cartContent.firstChild);
+	// }
+	// updateTotal();
+	// updateCartInStorage();
 	window.location.href = "Cart.html";
 	
 }
@@ -410,6 +409,12 @@ emailElement.addEventListener("blur", function() {
 const buttonPaymentConfirm = document.getElementById('payment-confirm');
 buttonPaymentConfirm.onclick = () =>{
 	saveInformationToLocalStorage();
+	var cartContent = document.getElementsByClassName('cart-content')[0];
+	while (cartContent.hasChildNodes()) {
+		cartContent.removeChild(cartContent.firstChild);
+	}
+	updateTotal();
+	updateCartInStorage();
 }
 
 
@@ -453,51 +458,53 @@ buttonPaymentConfirm.onclick = () =>{
 			  alert('Số điện thoại không đúng định dạng. Vui lòng kiểm tra lại.');
 			  phoneElement.focus();
 			  return;
+			}else{
+				const address = {
+					fullname: document.getElementById('fullnameInput').value,
+					email: emailValue,
+					phonenumber: phoneValue,
+					dob: document.getElementById('dobInput').value,
+					province: document.getElementById('province').value,
+					district: document.getElementById('district').value,
+					ward: document.getElementById('ward').value
+				  };
+			  
+				// Lấy thông tin giỏ hàng
+				const cartItems = [];
+				const cartList = document.getElementsByClassName('cart__item');
+				for (let i = 0; i < cartList.length; i++) {
+				  const cartItem = cartList[i];
+				//   const image = cartItem.querySelector('.img-payment-product').src;
+				  const title = cartItem.querySelector('p').textContent;
+				  const size = cartItem.querySelector('.product-pay-title').textContent;
+				  const quantity = cartItem.querySelector('.product-pay-quantity').textContent;
+				  const price = cartItem.querySelector('.product-pay-price').textContent;
+			  
+				  const product = {
+					// image,
+					title,
+					size,
+					quantity,
+					price
+				  };
+			  
+				  cartItems.push(product);
+				}
+				window.location.href = "PageCompleteOder.html";
+
 			}
 		}
 	  }
 	
 	
 	
-	  const address = {
-		fullname: document.getElementById('fullnameInput').value,
-		email: emailValue,
-		phonenumber: phoneValue,
-		dob: document.getElementById('dobInput').value,
-		address: document.getElementById('addressInput').value,
-		province: document.getElementById('province').value,
-		district: document.getElementById('district').value,
-		ward: document.getElementById('ward').value
-	  };
-  
-	// Lấy thông tin giỏ hàng
-	const cartItems = [];
-	const cartList = document.getElementsByClassName('cart__item');
-	for (let i = 0; i < cartList.length; i++) {
-	  const cartItem = cartList[i];
-	//   const image = cartItem.querySelector('.img-payment-product').src;
-	  const title = cartItem.querySelector('p').textContent;
-	  const size = cartItem.querySelector('.product-pay-title').textContent;
-	  const quantity = cartItem.querySelector('.product-pay-quantity').textContent;
-	  const price = cartItem.querySelector('.product-pay-price').textContent;
-  
-	  const product = {
-		// image,
-		title,
-		size,
-		quantity,
-		price
-	  };
-  
-	  cartItems.push(product);
-	}
+
   
 	// Tạo đối tượng chứa thông tin địa chỉ và giỏ hàng
 	const information = {
 	  address,
 	  cartItems
 	};
-	
 	return information;
   }
   
@@ -507,6 +514,10 @@ buttonPaymentConfirm.onclick = () =>{
   //kiểm tra thông tin được lưu đúng chưa
   function saveInformationToLocalStorage() {
 	const information = getInformation();
+	// if(information!=null){
+	// }else{
+	// 	alert('Vui lòng bổ sung đầy đủ thông tin');
+	// }
 	const jsonString = JSON.stringify(information);
 	localStorage.setItem('information', jsonString);
 	// window.location.href = "PageCompleteOder.html";
