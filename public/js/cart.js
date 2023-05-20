@@ -3,6 +3,9 @@ let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 let bodyElement = document.querySelector('body');
 let addToCartElement = document.getElementsByClassName('btn-muahang add')[0];
+
+
+
 //add to cart from detail product
 // addToCartElement.onclick = () =>{
 // 	cart.style.display = 'block';
@@ -14,8 +17,6 @@ let addToCartElement = document.getElementsByClassName('btn-muahang add')[0];
 // show cart
 cartIcon.onclick = () => {
 	cart.style.display = 'block';
-	// cart.style.zIndex = '2';
-	// bodyElement.classList.add('active');
 	updateTotal();
 	getCartFromStorage();
 };
@@ -559,14 +560,14 @@ function getInformationAddress() {
 	const cartList = document.getElementsByClassName('cart__item');
 	for (let i = 0; i < cartList.length; i++) {
 	  const cartItem = cartList[i];
-	  const image = cartItem.querySelector('.img-payment-product').src;
+	//   const image = cartItem.querySelector('.img-payment-product').src;
 	  const title = cartItem.querySelector('p').textContent;
 	  const size = cartItem.querySelector('.product-pay-title').textContent;
 	  const quantity = cartItem.querySelector('.product-pay-quantity').textContent;
 	  const price = cartItem.querySelector('.product-pay-price').textContent;
   
 	  const product = {
-		image,
+		// image,
 		title,
 		size,
 		quantity,

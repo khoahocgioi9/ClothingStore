@@ -15,8 +15,10 @@ applyCouponButton.addEventListener('click', function() {
         document.querySelector('#available').textContent = succ;
         document.querySelector('#available').style.display = 'block';
         console.log(`Giá sản phẩm sau khi giảm giá: ${discountedPrice}`);
-        const discountValue = productPrice - productPrice * discountRate;
-        document.querySelector('#discount-value').textContent = discountValue.toFixed(3) + ".000 vnđ";
+        let discountValue = productPrice - productPrice * discountRate;
+        discountValue = Math.round(discountValue * 100) / 100;
+        discountValue = ReplaceNumberWithCommas(discountValue*1000);
+        document.querySelector('#discount-value').textContent = discountValue + ",000 vnđ";
         document.querySelector('#isnotavailable').style.display = 'none';
         document.querySelector('#discount-value').style.display = 'block';
     } else {
