@@ -23,6 +23,8 @@ async function loadDataProductDetail(){
     var urlParams = new URLSearchParams(window.location.search);
     var productID = urlParams.get("productId");
 
+    console.log(productID)
+
     let response = await fetch(`https://lavent-clone.vercel.app/api/v1/product/${productID}`);
     console.log(productID);
     response.json().then((result) => {

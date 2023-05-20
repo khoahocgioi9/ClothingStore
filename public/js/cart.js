@@ -33,6 +33,8 @@ if (document.readyState == 'loading') {
 	ready();
 }
 
+
+//bat thong tin su kien
 function ready() {
 	//remove item from cart
 	var removeCartButtons = document.getElementsByClassName('cart-remove');
@@ -119,12 +121,11 @@ function addCartClicked() {
 	var productImg = document.getElementsByClassName('productImg')[0].src;
 	var price = document.getElementsByClassName('summary__price')[0].innerHTML;
 	var quantity = document.getElementsByClassName('amount')[0].value;
-	//save to local storage
-
-
+	console.log
 	addProductToCart(title, price, productImg, quantity);
 	alert("Thêm thành công!");
 	updateTotal();
+	updateCartInStorage();
 }
 
 //add product to cart
@@ -223,48 +224,48 @@ function updateCartInStorage() {
   }
 
 
-  function getCartFromStorage() {
-	var cartData = localStorage.getItem('cartData');
-	var cartItemsContainer = document.querySelector('.cart-content');
-	cartItemsContainer.innerHTML = '';
-  
-	// Kiểm tra xem dữ liệu giỏ hàng có tồn tại trong localStorage không
-	if (cartData) {
-	  var cartItems = JSON.parse(cartData);
-  
-	  // Lặp qua từng sản phẩm trong giỏ hàng và hiển thị thông tin ra
-	  for (var i = 0; i < cartItems.length; i++) {
-		var product = cartItems[i];
-  
-		// Tạo phần tử HTML để hiển thị thông tin sản phẩm
-		var cartShopBox = document.createElement('div');
-		cartShopBox.classList.add('cart-box');
-		
-		var cartBoxContent = `
-		  <img src="${product.productImg}"
-			style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
-		  <div class="detail-box" style="display: grid; row-gap: 0.5rem;">
-			<div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">${product.title}</div>
-			<div class="cart-price" style="font-weight: 600;">${product.price}</div>
-			<input type="number" value="${product.quantity}" class="cart-quantity"
-			  style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
-		  </div>
-		  <!-- Remove cart -->
-		  <i class="fa-solid fa-trash cart-remove"
-			style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
-		`;
-  
-		cartShopBox.innerHTML = cartBoxContent;
-		cartItemsContainer.appendChild(cartShopBox);
-  
-		var removeCartButton = cartShopBox.querySelector('.cart-remove');
-		removeCartButton.addEventListener('click', removeCartItem);
-  
-		var quantityInput = cartShopBox.querySelector('.cart-quantity');
-		quantityInput.addEventListener('change', quantityChanged);
-	  }
+function getCartFromStorage() {
+var cartData = localStorage.getItem('cartData');
+var cartItemsContainer = document.querySelector('.cart-content');
+cartItemsContainer.innerHTML = '';
+
+// Kiểm tra xem dữ liệu giỏ hàng có tồn tại trong localStorage không
+if (cartData) {
+	var cartItems = JSON.parse(cartData);
+
+	// Lặp qua từng sản phẩm trong giỏ hàng và hiển thị thông tin ra
+	for (var i = 0; i < cartItems.length; i++) {
+	var product = cartItems[i];
+
+	// Tạo phần tử HTML để hiển thị thông tin sản phẩm
+	var cartShopBox = document.createElement('div');
+	cartShopBox.classList.add('cart-box');
+	
+	var cartBoxContent = `
+		<img src="${product.productImg}"
+		style="width: 100px; height: 100px; object-fit: contain; padding: 10px;" alt="" class="cart-img">
+		<div class="detail-box" style="display: grid; row-gap: 0.5rem;">
+		<div class="cart-product-title" style="font-size: 1rem; text-transform: uppercase;">${product.title}</div>
+		<div class="cart-price" style="font-weight: 600;">${product.price}</div>
+		<input type="number" value="${product.quantity}" class="cart-quantity"
+			style="border: 1px solid; outline-color: rgb(0, 0, 0); width: 2.4rem; text-align: center; font-size: 1rem; ">
+		</div>
+		<!-- Remove cart -->
+		<i class="fa-solid fa-trash cart-remove"
+		style="font-size: 19px; cursor: pointer; margin-top: 2rem;"></i>
+	`;
+
+	cartShopBox.innerHTML = cartBoxContent;
+	cartItemsContainer.appendChild(cartShopBox);
+
+	var removeCartButton = cartShopBox.querySelector('.cart-remove');
+	removeCartButton.addEventListener('click', removeCartItem);
+
+	var quantityInput = cartShopBox.querySelector('.cart-quantity');
+	quantityInput.addEventListener('change', quantityChanged);
 	}
-  }
+}
+}
   
 // Hàm xử lý sự kiện lưu thông tin giỏ hàng vào local storage
 function saveCartToStorage() {
@@ -272,15 +273,15 @@ function saveCartToStorage() {
   
 	// Lưu cartData vào local storage
 	localStorage.setItem('cart', JSON.stringify(cartData));
-  }
+}
   
   // Gắn hàm xử lý sự kiện vào sự kiện beforeunload
-  window.addEventListener('beforeunload', saveCartToStorage);
+window.addEventListener('beforeunload', saveCartToStorage);
   
   
 
 
-//Xử lí ở Trang Payment
+//Xử lí ở ==============================Trang Payment========================
 
 //hàm show danh sách sản phẩm
 function showProductList(productList) {
@@ -369,46 +370,37 @@ function showProductList(productList) {
   
   // Gọi hàm displayProductListFromStorage() để hiển thị danh sách sản phẩm từ Local Storage
 //   displayProductListFromStorage();
+displayProductListFromStorage();
 
 
+//=============Xử lí sự kiện khi nhập input
+var inputElement = document.getElementById("fullnameInput");
 
+inputElement.addEventListener("focus", function() {
+  // Xóa giá trị khi nhấp vào
+  inputElement.value = "";
+});
 
-//Discound : giảm giá
-// function applyDiscount(code) {
-// 	const discounts = {
-// 	  "GIAM20": 0.2, // Giảm 20% (0.2 tương đương 20/100)
-// 	  "GIAM50": 0.5, // Giảm 50% (0.5 tương đương 50/100)
-// 	  // Các mã giảm giá khác
-// 	};
-  
-// 	const discountRate = discounts[code];
-  
-// 	if (discountRate !== undefined) {
-// 	  // Lấy giá trị tổng đơn hàng hiện tại
-// 	  const totalPriceElement = document.querySelector('.price-total-sum');
-// 	  const totalPrice = parseFloat(totalPriceElement.textContent);
-  
-// 	  // Tính toán giá trị sau khi áp dụng mã giảm giá
-// 	  const discountedPrice = totalPrice * (1 - discountRate);
-  
-// 	  // Cập nhật giá trị tổng đơn hàng với giá trị sau khi giảm giá
-// 	  totalPriceElement.textContent = discountedPrice.toFixed(2); // Làm tròn đến 2 chữ số thập phân
-// 	  alert('Áp dụng mã thành công!');
-// 	}else{
-// 		alert('code không chính xác!');
-// 	}
-//   }
-  
-//   let buttonDiscount = document.getElementById('apply-coupon');
+inputElement.addEventListener("blur", function() {
+  // Khôi phục giá trị ban đầu nếu người dùng không nhập gì
+  if (inputElement.value === "") {
+    inputElement.value = "Họ và tên";
+  }
+});
 
-//   buttonDiscount.onclick = () =>{
-// 	const discountCodeElement = document.getElementById('coupon-code');
-// 	const code = discountCodeElement.textContent;
+var emailElement = document.getElementById('emailInput');
 
-// 	if(DiscoundCode){
-// 		applyDiscount(code);
-// 	}
-//   }
+emailElement.addEventListener("focus", function() {
+  // Xóa giá trị khi nhấp vào
+  emailElement.value = "";
+});
+
+emailElement.addEventListener("blur", function() {
+  // Khôi phục giá trị ban đầu nếu người dùng không nhập gì
+  if (emailElement.value === "") {
+    emailElement.value = "Emaill";
+  }
+});
 
 
 
@@ -417,79 +409,19 @@ function showProductList(productList) {
 // Lấy thông tin đơn hàng lưu lại và gọi api khi click thanh toán
 const buttonPaymentConfirm = document.getElementById('payment-confirm');
 buttonPaymentConfirm.onclick = () =>{
-	// saveInformationToLocalStorage();
+	saveInformationToLocalStorage();
 }
 
-// function getInformationAddress() {
-// 	const inputs = [
-// 	  { id: 'fullnameInput', message: 'Vui lòng nhập họ và tên.' },
-// 	  { id: 'emailInput', message: 'Vui lòng nhập email.' },
-// 	  { id: 'phonenumberInput', message: 'Vui lòng nhập số điện thoại.' },
-// 	  { id: 'dobInput', message: 'Vui lòng chọn ngày sinh.' },
-// 	  { id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' }
-// 	];
-  
-// 	const selects = [
-// 	  { id: 'province', message: 'Vui lòng chọn tỉnh/thành phố.' },
-// 	  { id: 'district', message: 'Vui lòng chọn quận/huyện.' },
-// 	  { id: 'ward', message: 'Vui lòng chọn phường.' }
-// 	];
-  
-// 	// Biểu thức chính quy để kiểm tra định dạng email
-// 	const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  
-// 	for (const input of inputs) {
-// 	  const element = document.getElementById(input.id);
-// 	  const value = element.value;
-// 	  if (!value) {
-// 		alert(input.message);
-// 		element.focus();
-// 		return;
-// 	  }
-// 	}
-  
-// 	for (const select of selects) {
-// 	  const element = document.getElementById(select.id);
-// 	  const value = element.value;
-// 	  if (!value) {
-// 		alert(select.message);
-// 		element.focus();
-// 		return;
-// 	  }
-// 	}
-  
-// 	const emailElement = document.getElementById('emailInput');
-// 	const emailValue = emailElement.value;
-  
-// 	if (!emailPattern.test(emailValue)) {
-// 	  alert('Email không đúng định dạng. Vui lòng kiểm tra lại.');
-// 	  emailElement.focus();
-// 	  return;
-// 	}
-  
-// 	const address = {
-// 	  fullname: document.getElementById('fullnameInput').value,
-// 	  email: emailValue,
-// 	  phonenumber: document.getElementById('phonenumberInput').value,
-// 	  dob: document.getElementById('dobInput').value,
-// 	  address: document.getElementById('addressInput').value,
-// 	  province: document.getElementById('province').value,
-// 	  district: document.getElementById('district').value,
-// 	  ward: document.getElementById('ward').value
-// 	};
-  
-// 	return address;
-//   }
-  
-  
-  
+
+
   function getInformation() {
 	const inputs = [
 		{ id: 'fullnameInput', message: 'Vui lòng nhập họ và tên.' },
 		{ id: 'emailInput', message: 'Vui lòng nhập email.' },
 		{ id: 'phonenumberInput', message: 'Vui lòng nhập số điện thoại.' },
 		{ id: 'dobInput', message: 'Vui lòng chọn ngày sinh.' },
-		{ id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' }
+		{ id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' },
+		{ id: 'addressInfor', message: 'Vui lòng nhập địa chỉ.' }
 	  ];
 	
 	
@@ -570,12 +502,6 @@ buttonPaymentConfirm.onclick = () =>{
   }
   
   
-//   function postInformationToDatabase() {
-// 	const information = getInformation();
-  
-// 	// Gọi hàm API để post dữ liệu lên database
-// 	// Ghi code API ở đây
-//   }
 
   
   //kiểm tra thông tin được lưu đúng chưa
@@ -584,4 +510,13 @@ buttonPaymentConfirm.onclick = () =>{
 	const jsonString = JSON.stringify(information);
 	localStorage.setItem('information', jsonString);
 	// window.location.href = "PageCompleteOder.html";
+  }
+
+
+
+    function postInformationToDatabase() {
+	const information = getInformation();
+  
+	// Gọi hàm API để post dữ liệu lên database
+	// Ghi code API ở đây
   }
