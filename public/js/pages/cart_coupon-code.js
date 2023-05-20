@@ -3,7 +3,8 @@ applyCouponButton.addEventListener('click', function() {
     const couponCode = document.querySelector('#coupon-code').value;
     const couponCodes = ['SALE10', 'SALE20', 'SALE30'];
     const discountRates = [0.1, 0.2, 0.3];
-    const productPrice = 320;
+    let productPriceElement = document.getElementsByClassName('price-first-sum')[0];
+    var productPrice = parseFloat(productPriceElement.innerText.replace('vnd', ''));
     // Kiểm tra xem mã giảm giá có hợp lệ hay không
     const index = couponCodes.indexOf(couponCode);
     if (index !== -1) {
@@ -15,7 +16,7 @@ applyCouponButton.addEventListener('click', function() {
         document.querySelector('#available').style.display = 'block';
         console.log(`Giá sản phẩm sau khi giảm giá: ${discountedPrice}`);
         const discountValue = productPrice - productPrice * discountRate;
-        document.querySelector('#discount-value').textContent = discountValue.toFixed(3) + "vnđ";
+        document.querySelector('#discount-value').textContent = discountValue.toFixed(3) + ".000 vnđ";
         document.querySelector('#isnotavailable').style.display = 'none';
         document.querySelector('#discount-value').style.display = 'block';
     } else {

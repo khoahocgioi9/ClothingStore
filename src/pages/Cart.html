@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/public/.css/style.css">
     <link rel="stylesheet" href="/public/.css/formdangky.css">
     <link rel="stylesheet" href="/public/.css/formlogin.css">
-    <link rel="stylesheet" href="/public/.css/.css">
     <link rel="stylesheet" href="/public/.css/formcart.css">
 
     <title>Thanh Toán - Levents®</title>
@@ -287,18 +286,18 @@
                     </div>
                     <div class="range_spcBtw frm__flex__spcBtw">
                         <div class="col-2">
-                            <input type="text" id="emailInput" name="gmail" class="frm__border" placeholder="Email" readonly>
+                            <input type="text" id="emailInput" name="gmail" class="frm__border" placeholder="Email">
                         </div>
                         <div class="col-2">
-                            <input type="text" id="phonenumberInput" name="phonenumber" class="frm__border" placeholder="Số điện thoại" readonly>
+                            <input type="text" id="phonenumberInput" name="phonenumber" class="frm__border" placeholder="Số điện thoại">
                         </div>
                     </div>
                     <div class="range_spcBtw frm__flex__spcBtw">
                         <div class="col-3">
-                            <input type="date" id="dobInput" name="birthday" class="frm__border" value="">
+                            <input type="date" id="dobInput" name="birthday" class="frm__border" value="-1">
                         </div>
                         <div class="col-4">
-                            <input type="text" name="address" class="frm__border" placeholder="Địa chỉ" value="">
+                            <input type="text" name="address" class="frm__border" placeholder="Địa chỉ" value="-1">
                         </div>
                     </div>
                     <div class="address-form frm__flex__spcBtw range_spcBtw">
@@ -329,8 +328,8 @@
                 </section>
                 <div class="payment-confirm frm__flex__spcBtw">
                     <a href="product_Ao.html" class="continue-shopping">&#60 Tiếp tục mua sắm</a>
-                    <button type="submit" class="mini-btn-form">
-                    <a href="PageCompleteOder.html"> Thanh toán</a>  
+                    <button type="submit" id="payment-confirm" class="mini-btn-form">
+                    <a href="#"> Thanh toán</a>  
                     </button>
                 </div>
             </div>
@@ -340,11 +339,9 @@
                 <h3>Giỏ hàng</h3>
                 <br>
                 <div class="cart__list frm__border " style="height: 260px; overflow: auto;">
-
-
                     <!-- cart-box của sản phẩm -->
                     <div class="cart__item frm__flex">
-                        <img src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
+                        <img class="img-payment-product" src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
 
                         <div class="checkInfo">
                             <a href="Link__sp.html">
@@ -360,71 +357,6 @@
                         </div> 
                     </div>
                     <!-- end cart-box -->
-                    <div class="cart__item frm__flex">
-                        <img src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
-                        <div class="checkInfo">
-                            <a href="Link__sp.html">
-                                <p>Levents Polor Shirt Polo/Green</p>
-                                <br>
-                                <p class="product-pay-title">Size: SIZE 3</p>
-                                <br>
-                                <div class="qual-price">
-                                    <div class="product-pay-quantity">SL: x1 </div>
-                                    <div class="product-pay-price">320.000 vnđ</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cart__item frm__flex">
-                        <img src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
-                        <div class="checkInfo">
-                            <a href="Link__sp.html">
-                                <p>Levents Polor Shirt Polo/Green</p>
-                                <br>
-                                <p class="product-pay-title">Size: SIZE 3</p>
-                                <br>
-                                <div class="qual-price">
-                                    <div class="product-pay-quantity">SL: x1 </div>
-                                    <div class="product-pay-price">320.000 vnđ</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cart__item frm__flex">
-                        <img src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
-                        <div class="checkInfo">
-                            <a href="Link__sp.html">
-                                <p>Levents Polor Shirt Polo/Green</p>
-                                <br>
-                                <p class="product-pay-title">Size: SIZE 3</p>
-                                <br>
-                                <div class="qual-price">
-                                    <div class="product-pay-quantity">SL: x1 </div>
-                                    <div class="product-pay-price">320.000 vnđ</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cart__item frm__flex">
-                        <img src="../../public/static resources/img/ao1.jpeg" width="30%" alt="">
-                        <div class="checkInfo">
-                            <a href="Link__sp.html">
-                                <p>Levents Polor Shirt Polo/Green</p>
-                                <br>
-                                <p class="product-pay-title">Size: SIZE 3</p>
-                                <br>
-                                <div class="qual-price">
-                                    <div class="product-pay-quantity">SL: x1 </div>
-                                    <div class="product-pay-price">320.000 vnđ</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
                 </div>
                 <div class="discount-code frm__border">
                     <input type="text" class="code__apply frm__border" id="coupon-code" name="coupon-code" placeholder="Nhập mã giảm giá">
@@ -434,11 +366,11 @@
                 </div>
                 <div class="sum frm__border frm__flex__spcBtw">
                     <div class="firstSum">Tạm tính</div>
-                    <div class="price">320.000vnđ</div>
+                    <div class="price-first-sum">320.000vnđ</div>
                 </div>
                 <div class="sum frm__border__noneStyle frm__flex__spcBtw">
                     <div class="totalSum">Tổng</div>
-                    <div class="price" id="discount-value">320.000vnđ</div>
+                    <div class="price-total-sum" id="discount-value">320.000vnđ</div>
                 </div>
             </div>
         </div>

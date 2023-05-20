@@ -275,3 +275,330 @@ function saveCartToStorage() {
   window.addEventListener('beforeunload', saveCartToStorage);
   
   
+
+
+//Xử lí ở Trang Payment
+
+//hàm show danh sách sản phẩm
+function showProductList(productList) {
+	const cartListContainer = document.getElementsByClassName('cart__list frm__border')[0];
+  
+	// Xóa bỏ các sản phẩm cũ trước khi hiển thị danh sách mới
+	cartListContainer.innerHTML = '';
+
+	var total = 0;
+  
+	productList.forEach(product => {
+	  // Tạo các phần tử HTML tương ứng với từng sản phẩm
+	  const cartItem = document.createElement('div');
+	  cartItem.className = 'cart__item frm__flex';
+  
+	  const image = document.createElement('img');
+	  image.className = 'img-payment-product';
+	  image.src = product.productImg;
+	  console.log(image);
+	  image.style.width = '25%';
+	  image.alt = '';
+  
+	  const checkInfo = document.createElement('div');
+	  checkInfo.className = 'checkInfo';
+  
+	  const productLink = document.createElement('a');
+	  productLink.href = 'Link__sp.html';
+  
+	  const productName = document.createElement('p');
+	  productName.textContent = product.title;
+  
+	  const productSize = document.createElement('p');
+	  productSize.className = 'product-pay-title';
+	  productSize.textContent = product.size;
+  
+	  const qualPrice = document.createElement('div');
+	  qualPrice.className = 'qual-price';
+  
+	  const productQuantity = document.createElement('div');
+	  productQuantity.className = 'product-pay-quantity';
+	  productQuantity.textContent = "Số Lượng: " + product.quantity;
+  
+	  const productPrice = document.createElement('div');
+	  productPrice.className = 'product-pay-price';
+	  productPrice.textContent = "Giá: " + product.price;
+
+	  total = total + parseFloat(product.price.replace('vnd', '')) * product.quantity;
+  
+	  // Xây dựng cấu trúc cây HTML
+	  cartListContainer.appendChild(cartItem);
+	  cartItem.appendChild(image);
+	  cartItem.appendChild(checkInfo);
+	  checkInfo.appendChild(productLink);
+	  productLink.appendChild(productName);
+	  productLink.appendChild(document.createElement('br'));
+	  productLink.appendChild(productSize);
+	  productLink.appendChild(document.createElement('br'));
+	  productLink.appendChild(qualPrice);
+	  qualPrice.appendChild(productQuantity);
+	  qualPrice.appendChild(productPrice);
+	});
+	total = Math.round(total * 100) / 100;
+	total = ReplaceNumberWithCommas(total);
+
+	document.getElementsByClassName('price-first-sum')[0].innerText =
+		total + ',000' + ' vnd';
+	document.getElementsByClassName('price-total-sum')[0].innerText =
+	total + ',000' + ' vnd';	
+  }
+  
+  
+
+//hàm lấy dữ liệu từ Storage và gọi hàm show danh sách
+  function displayProductListFromStorage() {
+	// Lấy dữ liệu từ Local Storage
+	const jsonString = localStorage.getItem('cartData');
+	
+	if (jsonString) {
+	  // Chuyển đổi chuỗi JSON thành mảng sản phẩm
+	  const productList = JSON.parse(jsonString);
+  
+	  // Gọi hàm showProductList() và truyền mảng sản phẩm để hiển thị
+	  showProductList(productList);
+	}
+  }
+  
+  // Gọi hàm displayProductListFromStorage() để hiển thị danh sách sản phẩm từ Local Storage
+  displayProductListFromStorage();
+
+
+
+
+//Discound : giảm giá
+// function applyDiscount(code) {
+// 	const discounts = {
+// 	  "GIAM20": 0.2, // Giảm 20% (0.2 tương đương 20/100)
+// 	  "GIAM50": 0.5, // Giảm 50% (0.5 tương đương 50/100)
+// 	  // Các mã giảm giá khác
+// 	};
+  
+// 	const discountRate = discounts[code];
+  
+// 	if (discountRate !== undefined) {
+// 	  // Lấy giá trị tổng đơn hàng hiện tại
+// 	  const totalPriceElement = document.querySelector('.price-total-sum');
+// 	  const totalPrice = parseFloat(totalPriceElement.textContent);
+  
+// 	  // Tính toán giá trị sau khi áp dụng mã giảm giá
+// 	  const discountedPrice = totalPrice * (1 - discountRate);
+  
+// 	  // Cập nhật giá trị tổng đơn hàng với giá trị sau khi giảm giá
+// 	  totalPriceElement.textContent = discountedPrice.toFixed(2); // Làm tròn đến 2 chữ số thập phân
+// 	  alert('Áp dụng mã thành công!');
+// 	}else{
+// 		alert('code không chính xác!');
+// 	}
+//   }
+  
+//   let buttonDiscount = document.getElementById('apply-coupon');
+
+//   buttonDiscount.onclick = () =>{
+// 	const discountCodeElement = document.getElementById('coupon-code');
+// 	const code = discountCodeElement.textContent;
+
+// 	if(DiscoundCode){
+// 		applyDiscount(code);
+// 	}
+//   }
+
+
+
+
+
+// Lấy thông tin đơn hàng lưu lại và gọi api khi click thanh toán
+const buttonPaymentConfirm = document.getElementById('payment-confirm');
+buttonPaymentConfirm.onclick = () =>{
+	saveInformationToLocalStorage();
+}
+
+// function getInformationAddress() {
+// 	const inputs = [
+// 	  { id: 'fullnameInput', message: 'Vui lòng nhập họ và tên.' },
+// 	  { id: 'emailInput', message: 'Vui lòng nhập email.' },
+// 	  { id: 'phonenumberInput', message: 'Vui lòng nhập số điện thoại.' },
+// 	  { id: 'dobInput', message: 'Vui lòng chọn ngày sinh.' },
+// 	  { id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' }
+// 	];
+  
+// 	const selects = [
+// 	  { id: 'province', message: 'Vui lòng chọn tỉnh/thành phố.' },
+// 	  { id: 'district', message: 'Vui lòng chọn quận/huyện.' },
+// 	  { id: 'ward', message: 'Vui lòng chọn phường.' }
+// 	];
+  
+// 	// Biểu thức chính quy để kiểm tra định dạng email
+// 	const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
+// 	for (const input of inputs) {
+// 	  const element = document.getElementById(input.id);
+// 	  const value = element.value;
+// 	  if (!value) {
+// 		alert(input.message);
+// 		element.focus();
+// 		return;
+// 	  }
+// 	}
+  
+// 	for (const select of selects) {
+// 	  const element = document.getElementById(select.id);
+// 	  const value = element.value;
+// 	  if (!value) {
+// 		alert(select.message);
+// 		element.focus();
+// 		return;
+// 	  }
+// 	}
+  
+// 	const emailElement = document.getElementById('emailInput');
+// 	const emailValue = emailElement.value;
+  
+// 	if (!emailPattern.test(emailValue)) {
+// 	  alert('Email không đúng định dạng. Vui lòng kiểm tra lại.');
+// 	  emailElement.focus();
+// 	  return;
+// 	}
+  
+// 	const address = {
+// 	  fullname: document.getElementById('fullnameInput').value,
+// 	  email: emailValue,
+// 	  phonenumber: document.getElementById('phonenumberInput').value,
+// 	  dob: document.getElementById('dobInput').value,
+// 	  address: document.getElementById('addressInput').value,
+// 	  province: document.getElementById('province').value,
+// 	  district: document.getElementById('district').value,
+// 	  ward: document.getElementById('ward').value
+// 	};
+  
+// 	return address;
+//   }
+function getInformationAddress() {
+
+  
+	return address;
+  }
+  
+  
+  
+  function getInformation() {
+	const inputs = [
+		{ id: 'fullnameInput', message: 'Vui lòng nhập họ và tên.' },
+		{ id: 'emailInput', message: 'Vui lòng nhập email.' },
+		{ id: 'phonenumberInput', message: 'Vui lòng nhập số điện thoại.' },
+		{ id: 'dobInput', message: 'Vui lòng chọn ngày sinh.' },
+		{ id: 'addressInput', message: 'Vui lòng nhập địa chỉ.' }
+	  ];
+	
+	//   const selects = [
+	// 	{ id: 'province', message: 'Vui lòng chọn tỉnh/thành phố.' },
+	// 	{ id: 'district', message: 'Vui lòng chọn quận/huyện.' },
+	// 	{ id: 'ward', message: 'Vui lòng chọn phường.' }
+	//   ];
+	
+	  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	  const phonePattern = /^\d{10}$/;
+	
+	  for (const input of inputs) {
+		const element = document.getElementById(input.id);
+		const value = element.value;
+  
+		if (!value) {
+		  alert(input.message);
+		  element.focus();
+		  return;
+		}else{
+			const emailElement = document.getElementById('emailInput');
+			const emailValue = emailElement.value;
+		  
+			if (!emailPattern.test(emailValue)) {
+			  alert('Email không đúng định dạng. Vui lòng kiểm tra lại.');
+			  emailElement.focus();
+			  return;
+			}
+
+			const phoneElement = document.getElementById('phonenumberInput');
+			const phoneValue = phoneElement.value;
+		  
+			if (!phonePattern.test(phoneValue)) {
+			  alert('Số điện thoại không đúng định dạng. Vui lòng kiểm tra lại.');
+			  phoneElement.focus();
+			  return;
+			}
+		}
+	  }
+	
+	//   for (const select of selects) {
+	// 	const element = document.getElementById(select.id);
+	// 	const value = element.value;
+	// 	if (!value) {
+	// 	  alert(select.message);
+	// 	  element.focus();
+	// 	  return;
+	// 	}
+	//   }
+	
+	
+	  const address = {
+		fullname: document.getElementById('fullnameInput').value,
+		email: emailValue,
+		phonenumber: phoneValue,
+		dob: document.getElementById('dobInput').value,
+		address: document.getElementById('addressInput').value,
+		province: document.getElementById('province').value,
+		district: document.getElementById('district').value,
+		ward: document.getElementById('ward').value
+	  };
+  
+	// Lấy thông tin giỏ hàng
+	const cartItems = [];
+	const cartList = document.getElementsByClassName('cart__item');
+	for (let i = 0; i < cartList.length; i++) {
+	  const cartItem = cartList[i];
+	  const image = cartItem.querySelector('.img-payment-product').src;
+	  const title = cartItem.querySelector('p').textContent;
+	  const size = cartItem.querySelector('.product-pay-title').textContent;
+	  const quantity = cartItem.querySelector('.product-pay-quantity').textContent;
+	  const price = cartItem.querySelector('.product-pay-price').textContent;
+  
+	  const product = {
+		image,
+		title,
+		size,
+		quantity,
+		price
+	  };
+  
+	  cartItems.push(product);
+	}
+  
+	// Tạo đối tượng chứa thông tin địa chỉ và giỏ hàng
+	const information = {
+	  address,
+	  cartItems
+	};
+	
+	console.log(information)
+	return information;
+  }
+  
+  
+  function postInformationToDatabase() {
+	const information = getInformation();
+  
+	// Gọi hàm API để post dữ liệu lên database
+	// Ghi code API ở đây
+  }
+
+  
+  //kiểm tra thông tin được lưu đúng chưa
+  function saveInformationToLocalStorage() {
+	const information = getInformation();
+	const jsonString = JSON.stringify(information);
+	localStorage.setItem('information', jsonString);
+	// window.location.href = "PageCompleteOder.html";
+  }
