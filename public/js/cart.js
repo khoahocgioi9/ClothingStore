@@ -5,8 +5,13 @@ let bodyElement = document.querySelector('body');
 let addToCartElement = document.getElementsByClassName('btn-muahang add')[0];
 
 
+if(window.location.pathname.includes("ProductDetail.html")){
+	cart.style.display = 'block';
+// 	updateTotal();
+	getCartFromStorage();
+	updateTotal();
+}
 
-//add to cart from detail product
 // addToCartElement.onclick = () =>{
 // 	cart.style.display = 'block';
 // 	// cart.style.zIndex = '2';
