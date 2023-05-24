@@ -501,28 +501,26 @@
         <div class="modal__body">
             <div id='containerForm' class="auth-form">
                 <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <span class="auth-form__switch-btn">Đăng Nhập</span>
-                        <button class="btnClose" id="btnCloseModal">x</button>
-                    </div>
-                    <form onsubmit="Login()" action="">
+                    
+                    <form id="login-form">
+                        <div class="auth-form__header">
+                            <span class="auth-form__switch-btn">Đăng Nhập</span>
+                            <button class="btnClose" id="btnCloseModal">x</button>
+                        </div>
                         <div class="auth-form__form">
                             <div class="auth-form__group">
-                                <span class="auth-form__dangky">Bạn chưa có tài khoản?
-                                    <a id='btnDangKy' href="#" class="auth-form__dangky--theA">Đăng ký</a>
-                                </span>
-                                <input type="text" id="loginEmail" class="auth-form__input" placeholder="Email">
-                            </div>
+                                <span class="auth-form__dangky">Bạn chưa có tài khoản?         
+                           <a id='btnDangKy' href="#" class="auth-form__dangky--theA">Đăng ký</a>
+                        </span>
+                                <input type="text" id="loginEmail" class="auth-form__input" placeholder="Email"> </div>
                             <div class="auth-form__group">
                                 <div class="form__group--child">
                                     <input type="password" id="passw" class="auth-form__input" placeholder="Password">
                                     <div style="display: flex; align-items: center;" class="">
-                                        <input onclick='togglePassword()' type='checkbox' id='checkbox'
-                                            style="display:none;">
-                                        <label for='checkbox' style="cursor: pointer;"><i
-                                                class="check-pass fa-solid fa-eye"></i></label>
+                                        <input onclick='togglePassword()' type='checkbox' id='checkbox' style="display:none;">
+                                        <label for='checkbox' style="cursor: pointer;"><i class="check-pass fa-solid fa-eye"></i></label>
                                     </div>
-
+    
                                 </div>
                             </div>
                         </div>
@@ -533,13 +531,13 @@
                         </div>
                         <div id="loginError" class="error-message">Sai mật khẩu hoặc email</div>
                         <div class="auth-form__controls">
-                            <button class="btn-dangky btn--primary">ĐĂNG NHẬP</button>
+                            <button type="submit" class="btn-dangky btn--primary">ĐĂNG NHẬP</button>
                         </div>
-
+    
                     </form>
                 </div>
             </div>
-
+    
         </div>
     </div>
     <!-- ======================Form:Đăng ký================================== -->
@@ -547,33 +545,30 @@
         <div class="modal__body">
             <div id='containerFormDangKy' class="auth-form-dangky">
                 <div class="auth-form__container__dangky">
-                    <div class="auth-form__header__dangky">
-                        <span class="auth-form__switch-btn__dangky">TẠO TÀI KHOẢN</span>
-                        <button id="btnCloseModalTwo">x</button>
-                    </div>
-                    <form onsubmit="signUp()" action="">
+                    
+                    <form id="register-form">
+                        <div class="auth-form__header__dangky">
+                            <span class="auth-form__switch-btn__dangky">TẠO TÀI KHOẢN</span>
+                            <button id="btnCloseModalTwo">x</button>
+                        </div>
                         <div class="auth-form__form__dangky">
                             <div class="auth-form__group">
-                                <input type="text" name="" id="nameSign" class='auth-form__input__dangky'
-                                    placeholder="Họ và tên">
+                                <input type="text" name="" id="nameSign" class='auth-form__input__dangky' placeholder="Họ và tên">
                                 <input type="text" id="emailSign" class="auth-form__input__dangky" placeholder="Email">
                                 <!-- <input type="date" name="" id="birthday" class="auth-form__input__dangky" placeholder="Ngày sinh"> -->
                                 <!-- <input type="number" name="" id="phone"class="auth-form__input__dangky" placeholder="Số điện thoại">  -->
                             </div>
                             <div class="auth-form__group">
-                                <input type="password" id="passwordSign" class="auth-form__input__dangky"
-                                    placeholder="Mật khẩu">
+                                <input type="password" id="passwordSign" class="auth-form__input__dangky" placeholder="Mật khẩu">
                             </div>
                             <div class="auth-form__group">
-                                <input type="password" id="again-passw" class="auth-form__input__dangky"
-                                    placeholder="Xác nhận mật khẩu">
+                                <input type="password" id="again-passw" class="auth-form__input__dangky" placeholder="Xác nhận mật khẩu">
                             </div>
                         </div>
-
+    
                         <div class="auth-form__aside-dangky">
                             <p class="auth-form__policy-dangky">
-                                <input type="checkbox" value="None" class="checkbox" name="check"> Tôi đồng ý với các
-                                điều khoản và điều kiện, chính sách bảo mật và chính sách cookie
+                                <input type="checkbox" value="None" class="checkbox" name="check"> Tôi đồng ý với các điều khoản và điều kiện, chính sách bảo mật và chính sách cookie
                             </p>
                             <p id="alert-message"></p>
                         </div>
@@ -584,6 +579,7 @@
             </div>
             </form>
         </div>
+    
     </div>
 
     <!-- general javascript -->
